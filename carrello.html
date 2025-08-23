@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello - Moodbites</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <!-- Intestazione -->
+    <header>
+        <div class="logo">
+            <h1>Moodbites</h1>
+            <p>Il paradiso degli snack!</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="carrello.html">Carrello</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="contatti.html"><i class="fas fa-user"></i></a>
+            <a href="carrello.html">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Contenuto carrello -->
+    <section class="cart-section">
+        <div class="container">
+            <div id="carrello"></div>
+
+  
+            
+            <div class="cart-container">
+                <!-- Lista prodotti nel carrello -->
+                <div class="cart-items">
+                    <div class="cart-item">
+                        <img src="img/prodotto1.jpg" alt="Patatine piccanti">
+                        <div class="item-details">
+                            <h3>Patatine Piccanti</h3>
+                            <p>€1.99</p>
+                            <div class="quantity-controls">
+                                <button>-</button>
+                                <span>2</span>
+                                <button>+</button>
+                            </div>
+                            <button class="remove-btn">Rimuovi</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Altri prodotti nel carrello... -->
+                </div>
+                
+                <!-- Riepilogo ordine -->
+                <div class="cart-summary">
+                    <h3>Riepilogo ordine</h3>
+                    <div class="summary-details">
+                        <p>Subtotale: <span>€3.98</span></p>
+                        <p>Spedizione: <span>€2.50</span></p>
+                        <p class="total">Totale: <span>€6.48</span></p>
+                    </div>
+                    <a href="checkout.html" class="btn">Procedi al checkout</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (uguale alla homepage) -->
+        <!-- ... stesso footer della homepage ... -->
+         <footer>
+    <p>&copy; 2023 MoodBites</p>
+    </footer>
+    <title>Bottone Avanti/Indietro</title>
+  <style>
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: grey;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: pink;
+    }
+  </style>
+    <div class="nav-buttons">
+        <a href="index.html">⬅ Indietro</a>
+    <a href="contatti.html">➡ Avanti</a>
+  </div>
+ 
+</body>
+</html>
+
+

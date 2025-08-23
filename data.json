@@ -1,0 +1,59 @@
+[
+  {
+    "image": "img/barretta-cioccolato.jpg",
+    "name": "Barretta al cioccolato - Solitudine",
+    "title": "Barretta Cioccolato",
+    "desc": "Ricca di magnesio e cacao, stimola la serotonina e migliora l’umore.",
+    "price": "1.50"
+  },
+  {
+    "image": "img/barretta-frutta.jpg",
+    "name": "Barretta alla frutta secca - Ansia",
+    "title": "Barretta alla Frutta Secca",
+    "desc": "Con omega 3 e vitamine del gruppo B, favorisce il rilassamento.",
+    "price": "2.50"
+  },
+  {
+    "image": "img/barretta_tristezza.jpg",
+    "name": "Barretta al Cocco - Tristezza",
+    "title": "Barretta al cocco - Tristezza",
+    "desc": "Un mix di cocco e magnesio che stimola la serotonina, perfetto per ritrovare il buonumore.",
+    "price": "1.99"
+  },
+  {
+    "image": "img/caramelle_ansia.jpg",
+    "name": "Caramelle - Ansia",
+    "title": "Caramelle alla Camomilla - Ansia",
+    "desc": "Dolci e rilassanti, con estratti naturali di camomilla e melissa per ridurre la tensione.",
+    "price": "1.20"
+  },
+  {
+    "image": "img/mix_vitalita.jpg",
+    "name": "Mix Frutta Secca - Stanchezza",
+    "title": "Mix Frutta Secca - Stanchezza",
+    "desc": "Un’esplosione di energia con noci, mandorle e frutta disidratata per ricaricare le batterie.",
+    "price": "2.50"
+  },
+  {
+    "image": "img/biscotti_allegria.jpg",
+    "name": "Biscotti - Allegria",
+    "title": "Biscotti agli Agrumi - Allegria",
+    "desc": "Biscotti croccanti al limone e arancia, ricchi di vitamina C, per portare leggerezza e buonumore.",
+    "price": "1.80"
+  },
+  {
+    "image": "img/wafer_concentrazione.jpg",
+    "name": "Wafer - Concentrazione",
+    "title": "Wafer al Matcha - Concentrazione",
+    "desc": "Farciti con crema al tè matcha, aiutano a migliorare la concentrazione e la memoria.",
+    "price": "2.20"
+  },
+  {
+    "image": "img/smoothie_amore.jpg",
+    "name": "Smoothie - Affetto",
+    "title": "Smoothie ai Frutti Rossi - Affetto",
+    "desc": "Dolce bevanda ai frutti rossi, ricca di antiossidanti, perfetta per coccolarsi e sentirsi amati.",
+    "price": "2.90"
+  }
+
+]

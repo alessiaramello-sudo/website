@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - MoodBites</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+            <div class="logo-text">
+                <h1>MoodBites</h1>
+                <p>Uno snack per capriccio!</p>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="contatti.html"><i class="fas fa-user"></i></a>
+            <a href="carrello.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+             <img src="img/logo.png" alt="Logo MoodBites" width="200">
+            <h2>Snack per scappare dal mal d'essere!</h2>
+            <p>Scopri la nostra selezione di snack dolci e salati da tutto il mondo</p>
+            <a href="prodotti.html" class="btn">Scopri ora</a>
+        </div>
+    </section>
+
+    <!-- Categorie -->
+    <section class="categories">
+        <h2>Le nostre categorie</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="img/dolci.jpg" alt="Snack dolci">
+                <h3>Dolci</h3>
+                <a href="prodotti.html" class="btn-small">Vedi prodotti</a>
+            </div>
+            <div class="category-card">
+                <img src="img/salati.jpg" alt="Snack salati">
+                <h3>Salati</h3>
+                <a href="prodotti2.html" class="btn-small">Vedi prodotti</a>
+            </div>
+            <div class="category-card">
+                <img src="img/sani.jpg" alt="Snack sani">
+                <h3>Snack sani</h3>
+                <a href="prodotti3.html" class="btn-small">Vedi prodotti</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prodotti in evidenza -->
+    <section class="featured">
+        <h2>I nostri bestseller</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/prodotto1.jpg" alt="Patatine piccanti">
+                <h3>Patatine Piccanti</h3>
+                <p class="price">€1.99</p>
+                <button class="btn-small">Aggiungi al carrello</button>
+            </div>
+            <div class="product-card">
+                <img src="img/prodotto2.jpg" alt="Barretta cioccolato">
+                <h3>Barretta Cioccolato</h3>
+                <p class="price">€1.49</p>
+                <button class="btn-small">Aggiungi al carrello</button>
+            </div>
+            <div class="product-card">
+                <img src="img/prodotto3.jpg" alt="Mix frutta secca">
+                <h3>Mix Frutta Secca</h3>
+                <p class="price">€2.99</p>
+                <button class="btn-small">Aggiungi al carrello</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Iscriviti alla nostra newsletter</h2>
+        <p>Ricevi sconti esclusivi e novità sui prodotti</p>
+        <form>
+            <input type="email" placeholder="La tua email">
+            <button type="submit" class="btn">Iscriviti</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Moodbites</h3>
+                <p>La miglior vetrina di snack per studenti universitari affaticati</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link veloci</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p>Email: info@moodbites.it</p>
+                <p>Telefono: 012 345 6789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Moodbites - Progetto universitario</p>
+        </div>
+    </footer>
+    
+ 
+    <title>Bottone Avanti/Indietro</title>
+  <style>
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: gray;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: pink;
+    }
+  </style>
+    <div class="nav-buttons">
+    <a href="prodotti.html">➡Avanti</a>
+  </div>
+</body>
+</html>

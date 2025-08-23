@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - MoodBites</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+            <div class="logo-text">
+                <h1>MoodBites</h1>
+                <p>Uno snack per capriccio!</p>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="#"><i class="fas fa-user"></i></a>
+            <a href="carrello.html"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+    <!-- Hero Section Contatti -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <img src="img/logo.png" alt="Logo MoodBites" width="200">
+            <h2>Contattaci</h2>
+            <p>Hai domande, suggerimenti o vuoi collaborare con noi? Scrivici!</p>
+        </div>
+    </section>
+
+    <!-- Sezione Contatti -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Info Contatti -->
+                <div class="contact-info">
+                    <h3>Informazioni di contatto</h3>
+                    <div class="contact-method">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Indirizzo</h4>
+                            <p>Via Duca Degli Abruzzi, 123<br>00127 Roma, Italia</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefono</h4>
+                            <p>+39 06 1234567</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@moodbites.it</p>
+                        </div>
+                    </div>
+                    <div class="contact-method">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Orari di apertura</h4>
+                            <p>Lunedì-Venerdì: 9:00-18:00<br>Sabato: 10:00-14:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <h4>Seguici sui social</h4>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Form Contatti -->
+                <div class="contact-form">
+                    <h3>Scrivici un messaggio</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nome e Cognome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Oggetto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Invia messaggio</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mappa -->
+    <section class="map-section">
+        <div class="container">
+            <h3>Dove trovarci</h3>
+            <div class="map-container">
+                <!-- Mappa Google Maps incorporata -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2969.654246110987!2d12.492230315441838!3d41.89021017922157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b6532013ad%3A0x28f1c82e908503c4!2sColosseo!5e0!3m2!1sit!2sit!4v1620000000000!5m2!1sit!2sit" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-extended">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Iscriviti alla nostra newsletter</h2>
+                    <p>Ricevi sconti esclusivi, novità sui prodotti e offerte speciali direttamente nella tua casella email.</p>
+                </div>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Il tuo nome">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="La tua email" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="privacy" required>
+                    <label for="privacy">Accetto l'informativa sulla privacy</label>
+                    </div>
+                    <button type="submit" class="btn">Iscriviti ora</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Moodbites</h3>
+                <p>Il miglior e-commerce di snack per studenti universitari</p>
+            </div>
+            <div class="footer-section">
+                <h3>Link veloci</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p>Email: info@moodbites.it</p>
+                <p>Telefono: 012 345 6789</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Moodbites - Progetto universitario</p>
+        </div>
+    </footer>
+
+    <script>
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+          
+            alert('Grazie per il tuo messaggio! Ti risponderemo al più presto.');
+            this.reset();
+        });
+    </script>
+    <title>Bottone Avanti/Indietro</title>
+  <style>
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: white;
+      color: grey;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: pink;
+    }
+  </style>
+    <div class="nav-buttons">
+    <a href="index.html">⬅ Indietro</a>
+  </div>
+  <script src="js/cart.js"></script>
+</body>
+</html>
