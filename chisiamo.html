@@ -8,28 +8,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo-container">
-            <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
-            <div class="logo-text">
-                <h1>MoodBites</h1>
-                <p>Uno snack per capriccio!</p>
+    <!-- Enhanced Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html" class="active">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
             </div>
-        </a>
-        <nav>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="prodotti.html">Prodotti</a></li>
-                <li><a href="chi-siamo.html" class="active">Chi Siamo</a></li>
+                <li><a href="chisiamo.html" class="active">Chi Siamo</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html">Allergeni</a></li>
             </ul>
-        </nav>
-        <div class="user-actions">
-            <a href="#"><i class="fas fa-user"></i></a>
-            <a href="carrello.html">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge">0</span>
-            </a>
         </div>
     </header>
 
@@ -131,32 +157,74 @@
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>MoodBites</h3>
-                <p>Uno snack per capriccio!</p>
+    <!-- Clean Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="prodotti.html">Snack Salati</a></li>
+                        <li><a href="prodotti.html">Snack Dolci</a></li>
+                        <li><a href="prodotti.html">Bevande</a></li>
+                        <li><a href="prodotti.html">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Link veloci</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="prodotti.html">Prodotti</a></li>
-                    <li><a href="contatti.html">Contatti</a></li>
-                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                </ul>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Contatti</h3>
-                <p>Email: info@moodbites.it</p>
-                <p>Telefono: 012 345 6789</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 MoodBites - Progetto universitario</p>
         </div>
     </footer>
 
-    <script src="js/cart-display.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

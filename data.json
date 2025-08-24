@@ -54,6 +54,34 @@
     "title": "Smoothie ai Frutti Rossi - Affetto",
     "desc": "Dolce bevanda ai frutti rossi, ricca di antiossidanti, perfetta per coccolarsi e sentirsi amati.",
     "price": "2.90"
+  },
+  {
+    "image": "img/crackers-relax.jpg",
+    "name": "Crackers Relax - Stress",
+    "title": "Crackers Relax",
+    "desc": "Con camomilla e semi di lino, ideali per calmare e rilassare.",
+    "price": "1.80"
+  },
+  {
+    "image": "img/patatine-energetiche.jpg",
+    "name": "Patatine Energizzanti - Noia",
+    "title": "Patatine Energizzanti",
+    "desc": "Croccanti con spezie naturali, danno carica e stimolano la curiosità.",
+    "price": "2.00"
+  },
+  {
+    "image": "img/grissini_stress.jpg",
+    "name": "Grissini Croccanti - Stress",
+    "title": "Grissini Croccanti",
+    "desc": "Croccanti e leggeri con semi di lino e triptofano, ideali per calmare la mente e rilassarsi.",
+    "price": "1.50"
+  },
+  {
+    "image": "img/patatine_noia.jpg",
+    "name": "Patatine Piccanti - Noia",
+    "title": "Patatine Piccanti",
+    "desc": "Un mix di spezie piccanti e gusto intenso per dare energia e spezzare la monotonia.",
+    "price": "1.70"
   }
 
 ]

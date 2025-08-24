@@ -3,51 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo - MoodBites</title>
+    <title>MoodBites - Uno snack per ogni capriccio!</title>
+    <meta name="description" content="Scopri MoodBites: snack dolci e salati da tutto il mondo per ogni stato d'animo. La tua nuova destinazione per il comfort food.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 <body>
-    <header>
-        <a href="index.html" class="logo-container">
-            <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
-            <div class="logo-text">
-                <h1>MoodBites</h1>
-                <p>Uno snack per capriccio!</p>
+        <!-- Clean Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
             </div>
-        </a>
-        <nav>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="prodotti.html">Prodotti</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
                 <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html">Allergeni</a></li>
             </ul>
-        </nav>
-        <div class="user-actions">
-            <a href="contatti.html"><i class="fas fa-user"></i></a>
-            <a href="carrello.html"><i class="fas fa-shopping-cart"></i></a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Enhanced Hero Section -->
+    <section class="hero fade-in">
         <div class="hero-content">
-             <img src="img/logo.png" alt="Logo MoodBites" width="200">
-            <h2>Snack per scappare dal mal d'essere!</h2>
-            <p>Scopri la nostra selezione di snack dolci e salati da tutto il mondo</p>
-            <a href="prodotti.html" class="btn">Scopri ora</a>
+            <img src="img/logo.png" alt="Logo MoodBites" class="hover-glow">
+            <h2 class="slide-up">Snack per scappare dal mal d'essere!</h2>
+            <p class="slide-up">Scopri la nostra selezione di snack dolci e salati da tutto il mondo per trasformare ogni momento in un'esperienza di gusto</p>
+            <a href="prodotti.html" class="btn btn-large hover-lift">
+                <i class="fas fa-rocket"></i>
+                Scopri ora
+            </a>
         </div>
     </section>
 
-    <!-- Categorie -->
+    <!-- Enhanced Categories -->
     <section class="categories">
-        <h2>Le nostre categorie</h2>
-        <div class="category-grid">
-            <div class="category-card">
-                <img src="img/dolci.jpg" alt="Snack dolci">
-                <h3>Dolci</h3>
+        <div class="container">
+            <h2 class="text-center slide-up">Le nostre categorie</h2>
+            <div class="category-grid">
+                <div class="category-card hover-lift fade-in">
+                    <img src="img/dolci.jpg" alt="Snack dolci">
+                    <h3>Dolci</h3>
+                    <p>Barrette energetiche, biscotti e dolciumi per i momenti di piacere e consolazione</p>
+                </div>
+                <div class="category-card hover-lift fade-in">
+                    <img src="img/salati.jpg" alt="Snack salati">
+                    <h3>Salati</h3>
+                    <p>Crackers, patatine e snack salati per soddisfare ogni voglia di sapore intenso</p>
+                </div>
+                <div class="category-card hover-lift fade-in">
+                    <img src="img/sani.jpg" alt="Snack sani">
+                    <h3>Snack Sani</h3>
+                    <p>Mix di frutta secca e semi per un'alimentazione equilibrata e gustosa</p>
+                </div>
+            </div>
+        </div>
+    </section>
                 <a href="prodotti.html" class="btn-small">Vedi prodotti</a>
             </div>
             <div class="category-card">
@@ -98,55 +150,74 @@
         </form>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Moodbites</h3>
-                <p>La miglior vetrina di snack per studenti universitari affaticati</p>
+    <!-- Clean Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="prodotti.html">Snack Salati</a></li>
+                        <li><a href="prodotti.html">Snack Dolci</a></li>
+                        <li><a href="prodotti.html">Bevande</a></li>
+                        <li><a href="prodotti.html">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Link veloci</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="prodotti.html">Prodotti</a></li>
-                    <li><a href="contatti.html">Contatti</a></li>
-                    
-                </ul>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Contatti</h3>
-                <p>Email: info@moodbites.it</p>
-                <p>Telefono: 012 345 6789</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2023 Moodbites - Progetto universitario</p>
         </div>
     </footer>
-    
- 
-    <title>Bottone Avanti/Indietro</title>
-  <style>
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: white;
-      color: gray;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    a:hover {
-      background-color: pink;
-    }
-  </style>
-    <div class="nav-buttons">
-    <a href="prodotti.html">➡Avanti</a>
-  </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

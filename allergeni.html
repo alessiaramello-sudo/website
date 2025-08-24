@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergeni - MoodBites</title>
+    <meta name="description" content="Informazioni complete sugli allergeni presenti nei nostri snack. La tua sicurezza è la nostra priorità.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html" class="active">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html" class="active">Allergeni</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Clean Hero Section -->
+    <section class="clean-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Informazioni Allergeni</h1>
+                <p>Consulta le informazioni sui principali allergeni presenti nei nostri prodotti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Allergen Cards -->
+    <section class="allergen-cards">
+        <div class="container">
+            <h2>I Nostri Prodotti</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>Barrette Energetiche</h3>
+                    <div class="allergen-tags">
+                        <span class="tag present">Frutta Secca</span>
+                        <span class="tag present">Lattosio</span>
+                        <span class="tag absent">Glutine Free</span>
+                    </div>
+                    <p>Perfette per la pausa studio</p>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Snack Salati</h3>
+                    <div class="allergen-tags">
+                        <span class="tag absent">Senza Lattosio</span>
+                        <span class="tag absent">Senza Frutta Secca</span>
+                        <span class="tag present">Può contenere Glutine</span>
+                    </div>
+                    <p>Croccanti e gustosi</p>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Dolci & Biscotti</h3>
+                    <div class="allergen-tags">
+                        <span class="tag present">Glutine</span>
+                        <span class="tag present">Lattosio</span>
+                        <span class="tag present">Uova</span>
+                    </div>
+                    <p>Dolcezza per ogni momento</p>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Bevande</h3>
+                    <div class="allergen-tags">
+                        <span class="tag absent">Senza Allergeni</span>
+                        <span class="tag absent">Naturali</span>
+                    </div>
+                    <p>Fresche e dissetanti</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Info -->
+    <section class="simple-info">
+        <div class="container">
+            <div class="info-content">
+                <h2>Informazioni Importanti</h2>
+                <div class="info-box">
+                    <p>📋 <strong>Etichette:</strong> Consulta sempre l'etichetta del prodotto per informazioni dettagliate</p>
+                    <p>☎️ <strong>Dubbi?</strong> Contattaci per qualsiasi domanda sugli allergeni</p>
+                    <p>🏭 <strong>Produzione:</strong> I nostri stabilimenti seguono rigorosi protocolli di sicurezza</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clean Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="prodotti.html">Snack Salati</a></li>
+                        <li><a href="prodotti.html">Snack Dolci</a></li>
+                        <li><a href="prodotti.html">Bevande</a></li>
+                        <li><a href="prodotti.html">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

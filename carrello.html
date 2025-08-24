@@ -3,106 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrello - Moodbites</title>
-    <script src="script.js"></script>
+    <title>Carrello - MoodBites</title>
+    <meta name="description" content="Rivedi e gestisci i tuoi snack nel carrello. Procedi al checkout per completare il tuo ordine MoodBites.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
 </head>
-
 <body>
-    <!-- Intestazione -->
-    <header>
-        <div class="logo">
-            <h1>Moodbites</h1>
-            <p>Il paradiso degli snack!</p>
+    <!-- Clean Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+               
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn active" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <nav>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="prodotti.html">Prodotti</a></li>
-                <li><a href="carrello.html">Carrello</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
                 <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html">Allergeni</a></li>
             </ul>
-        </nav>
-        <div class="user-actions">
-            <a href="contatti.html"><i class="fas fa-user"></i></a>
-            <a href="carrello.html">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-badge">0</span>
-            </a>
         </div>
     </header>
 
-    <!-- Contenuto carrello -->
+    <!-- Enhanced Cart Section -->
     <section class="cart-section">
         <div class="container">
-            <div id="carrello"></div>
-
-  
+            <div class="text-center mb-large">
+                <h1 class="slide-up">
+                    <i class="fas fa-shopping-cart"></i>
+                    Il tuo carrello
+                </h1>
+                <p class="text-secondary">Rivedi i tuoi snack preferiti e procedi al checkout</p>
+            </div>
             
-            <div class="cart-container">
-                <!-- Lista prodotti nel carrello -->
-                <div class="cart-items">
-                    <div class="cart-item">
-                        <img src="img/prodotto1.jpg" alt="Patatine piccanti">
-                        <div class="item-details">
-                            <h3>Patatine Piccanti</h3>
-                            <p>€1.99</p>
-                            <div class="quantity-controls">
-                                <button>-</button>
-                                <span>2</span>
-                                <button>+</button>
-                            </div>
-                            <button class="remove-btn">Rimuovi</button>
-                        </div>
+            <div class="cart-container fade-in">
+                <!-- Enhanced Cart Items -->
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be loaded here dynamically -->
+                    <div class="empty-cart text-center" style="display: none;">
+                        <i class="fas fa-shopping-cart" style="font-size: 4rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                        <h3>Il tuo carrello è vuoto</h3>
+                        <p class="text-secondary mb-medium">Aggiungi alcuni snack per iniziare!</p>
+                        <a href="prodotti.html" class="btn">
+                            <i class="fas fa-arrow-left"></i>
+                            Continua lo shopping
+                        </a>
                     </div>
-                    
-                    <!-- Altri prodotti nel carrello... -->
                 </div>
                 
-                <!-- Riepilogo ordine -->
+                <!-- Enhanced Order Summary -->
                 <div class="cart-summary">
-                    <h3>Riepilogo ordine</h3>
+                    <h3>
+                        <i class="fas fa-receipt"></i>
+                        Riepilogo ordine
+                    </h3>
                     <div class="summary-details">
-                        <p>Subtotale: <span>€3.98</span></p>
-                        <p>Spedizione: <span>€2.50</span></p>
-                        <p class="total">Totale: <span>€6.48</span></p>
+                        <p>
+                            <span>Subtotale:</span>
+                            <span id="subtotal">€0.00</span>
+                        </p>
+                        <p>
+                            <span>Spedizione:</span>
+                            <span id="shipping">€2.50</span>
+                        </p>
+                        <p class="total">
+                            <span>Totale:</span>
+                            <span id="total">€2.50</span>
+                        </p>
                     </div>
-                    <a href="checkout.html" class="btn">Procedi al checkout</a>
+                    
+                    <div class="cart-actions">
+                        <button class="btn btn-outline" id="clear-cart">
+                            <i class="fas fa-trash"></i>
+                            Svuota carrello
+                        </button>
+                        <a href="contatti.html" class="btn btn-large">
+                            <i class="fas fa-credit-card"></i>
+                            Procedi al checkout
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer (uguale alla homepage) -->
-        <!-- ... stesso footer della homepage ... -->
-         <footer>
-    <p>&copy; 2023 MoodBites</p>
+    <!-- Clean Modern Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="prodotti.html">Snack Salati</a></li>
+                        <li><a href="prodotti.html">Snack Dolci</a></li>
+                        <li><a href="prodotti.html">Bevande</a></li>
+                        <li><a href="prodotti.html">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
-    <title>Bottone Avanti/Indietro</title>
-  <style>
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-    a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: white;
-      color: grey;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    a:hover {
-      background-color: pink;
-    }
-  </style>
-    <div class="nav-buttons">
-        <a href="index.html">⬅ Indietro</a>
-    <a href="contatti.html">➡ Avanti</a>
-  </div>
- 
+
+    <script src="script.js"></script>
 </body>
 </html>
 
