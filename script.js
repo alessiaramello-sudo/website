@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileMenuHandlers();
     
     // Initialize cart badge
-    updateCartBadge([]);
+    const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    updateCartBadge(existingCart);
 
     // Initialize featured products on home page
     if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/website/')) {
@@ -218,9 +219,26 @@ function addCartItems(carrello){
 
 function updateCartBadge(items) {
   let badge = document.querySelectorAll(".cart-badge")[0] || document.querySelectorAll(".cart-count")[0]
-  console.log("carrello", items,badge)
+  console.log("carrello", items, badge)
   if(badge) {
-    badge.innerHTML = items || 0 
+    // Handle both array and number inputs
+    let count = 0;
+    if (Array.isArray(items)) {
+      count = items.length;
+    } else if (typeof items === 'number') {
+      count = items;
+    } else {
+      count = 0;
+    }
+    
+    badge.innerHTML = count;
+    
+    // Show/hide badge based on count
+    if (count > 0) {
+      badge.style.display = 'flex';
+    } else {
+      badge.style.display = 'none';
+    }
   }
 }
 
@@ -632,7 +650,7 @@ function renderProducts(products) {
         <h3>${prodotto.title || 'Untitled'}</h3>
         <p class="desc">${prodotto.desc || ''}</p>
         <p class="price">€${prodotto.price || '0.00'}</p>
-        <button class="add-to-cart hover-scale" data-product-index="${globalIndex}" onclick="event.stopPropagation();">
+        <button class="add-to-cart hover-scale" data-product-id="${productId}" data-product-index="${globalIndex}">
           <i class="fas fa-cart-plus"></i>
           Aggiungi al Carrello
         </button>
@@ -641,6 +659,59 @@ function renderProducts(products) {
       // Add staggered animation delay
       item.style.animationDelay = `${index * 0.1}s`;
       container.appendChild(item);
+      
+      // Add click handler to the add-to-cart button
+      const addToCartBtn = item.querySelector('.add-to-cart');
+      addToCartBtn.onclick = function(event) {
+        event.stopPropagation(); // Prevent card navigation
+        
+        console.log('Button clicked for product:', productId);
+        
+        // Direct cart addition without complex async calls
+        try {
+          let carrello = JSON.parse(localStorage.getItem('cart') || '[]');
+          
+          // Create cart product directly from current product data
+          const cartProduct = {
+            id: productId,
+            name: prodotto.name || prodotto.title,
+            title: prodotto.title || prodotto.name,
+            price: parseFloat(prodotto.price),
+            image: prodotto.image,
+            desc: prodotto.desc,
+            category: prodotto.category
+          };
+          
+          carrello.push(cartProduct);
+          localStorage.setItem('cart', JSON.stringify(carrello));
+          
+          // Update cart badge
+          updateCartBadge(carrello);
+          
+          console.log('Product added to cart successfully');
+          
+          // Show notification
+          if (typeof showNotification === 'function') {
+            showNotification(`${cartProduct.name} è stato aggiunto al carrello!`, 'success');
+          }
+          
+          // Visual feedback
+          const originalText = addToCartBtn.innerHTML;
+          addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Aggiunto!';
+          addToCartBtn.style.background = 'var(--success-color, #28a745)';
+          
+          setTimeout(() => {
+            addToCartBtn.innerHTML = originalText;
+            addToCartBtn.style.background = '';
+          }, 1500);
+          
+        } catch (error) {
+          console.error('Error adding to cart:', error);
+          if (typeof showNotification === 'function') {
+            showNotification('Errore durante l\'aggiunta al carrello', 'error');
+          }
+        }
+      };
     });
     
     console.log('Products rendered, checking buttons...');
@@ -759,7 +830,7 @@ function addToCart(productId) {
         bottone.style.background = '';
       }, 2000);
       
-      updateCartBadge(carrello.length);
+      updateCartBadge(carrello);
     } else {
       console.error('Invalid product object:', fullProduct);
       showNotification('Errore: dati prodotto non validi', 'error');
@@ -1074,7 +1145,7 @@ function changeQuantity(itemName, change) {
   
   localStorage.setItem('cart', JSON.stringify(carrello));
   loadCartPage();
-  updateCartBadge(carrello.length);
+  updateCartBadge(carrello);
 }
 
 // Enhanced removeFromCart with confirmation
@@ -1086,7 +1157,7 @@ function removeFromCart(itemName) {
     
     localStorage.setItem('cart', JSON.stringify(carrello));
     loadCartPage();
-    updateCartBadge(carrello.length);
+    updateCartBadge(carrello);
     
     if (carrello.length < initialLength) {
       showNotification(`${itemName} rimosso dal carrello`, 'success');
@@ -1117,7 +1188,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log('DOM Content Loaded');
   let carrello = JSON.parse(localStorage['cart'] || '[]');
   addCartItems(carrello);
-  updateCartBadge(carrello.length);
+  updateCartBadge(carrello);
   addProductItem();
   initializeFilters();
   initializeCartPage(); // Initialize cart page if we're on cart page
