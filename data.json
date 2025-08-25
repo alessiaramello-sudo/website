@@ -3,85 +3,96 @@
     "image": "img/barretta-cioccolato.jpg",
     "name": "Barretta al cioccolato - Solitudine",
     "title": "Barretta Cioccolato",
-    "desc": "Ricca di magnesio e cacao, stimola la serotonina e migliora l’umore.",
-    "price": "1.50"
+    "desc": "Ricca di magnesio e cacao, stimola la serotonina e migliora l'umore.",
+    "price": "1.50",
+    "category": "snack-dolci"
   },
   {
     "image": "img/barretta-frutta.jpg",
     "name": "Barretta alla frutta secca - Ansia",
     "title": "Barretta alla Frutta Secca",
     "desc": "Con omega 3 e vitamine del gruppo B, favorisce il rilassamento.",
-    "price": "2.50"
+    "price": "2.50",
+    "category": "healthy"
   },
   {
     "image": "img/barretta_tristezza.jpg",
     "name": "Barretta al Cocco - Tristezza",
     "title": "Barretta al cocco - Tristezza",
     "desc": "Un mix di cocco e magnesio che stimola la serotonina, perfetto per ritrovare il buonumore.",
-    "price": "1.99"
+    "price": "1.99",
+    "category": "snack-dolci"
   },
   {
     "image": "img/caramelle_ansia.jpg",
     "name": "Caramelle - Ansia",
     "title": "Caramelle alla Camomilla - Ansia",
     "desc": "Dolci e rilassanti, con estratti naturali di camomilla e melissa per ridurre la tensione.",
-    "price": "1.20"
+    "price": "1.20",
+    "category": "snack-dolci"
   },
   {
     "image": "img/mix_vitalita.jpg",
     "name": "Mix Frutta Secca - Stanchezza",
     "title": "Mix Frutta Secca - Stanchezza",
-    "desc": "Un’esplosione di energia con noci, mandorle e frutta disidratata per ricaricare le batterie.",
-    "price": "2.50"
+    "desc": "Un'esplosione di energia con noci, mandorle e frutta disidratata per ricaricare le batterie.",
+    "price": "2.50",
+    "category": "healthy"
   },
   {
     "image": "img/biscotti_allegria.jpg",
     "name": "Biscotti - Allegria",
     "title": "Biscotti agli Agrumi - Allegria",
     "desc": "Biscotti croccanti al limone e arancia, ricchi di vitamina C, per portare leggerezza e buonumore.",
-    "price": "1.80"
+    "price": "1.80",
+    "category": "snack-dolci"
   },
   {
     "image": "img/wafer_concentrazione.jpg",
     "name": "Wafer - Concentrazione",
     "title": "Wafer al Matcha - Concentrazione",
     "desc": "Farciti con crema al tè matcha, aiutano a migliorare la concentrazione e la memoria.",
-    "price": "2.20"
+    "price": "2.20",
+    "category": "snack-dolci"
   },
   {
     "image": "img/smoothie_amore.jpg",
     "name": "Smoothie - Affetto",
     "title": "Smoothie ai Frutti Rossi - Affetto",
     "desc": "Dolce bevanda ai frutti rossi, ricca di antiossidanti, perfetta per coccolarsi e sentirsi amati.",
-    "price": "2.90"
+    "price": "2.90",
+    "category": "bevande"
   },
   {
     "image": "img/crackers-relax.jpg",
     "name": "Crackers Relax - Stress",
     "title": "Crackers Relax",
     "desc": "Con camomilla e semi di lino, ideali per calmare e rilassare.",
-    "price": "1.80"
+    "price": "1.80",
+    "category": "snack-salati"
   },
   {
     "image": "img/patatine-energetiche.jpg",
     "name": "Patatine Energizzanti - Noia",
     "title": "Patatine Energizzanti",
     "desc": "Croccanti con spezie naturali, danno carica e stimolano la curiosità.",
-    "price": "2.00"
+    "price": "2.00",
+    "category": "snack-salati"
   },
   {
     "image": "img/grissini_stress.jpg",
     "name": "Grissini Croccanti - Stress",
     "title": "Grissini Croccanti",
     "desc": "Croccanti e leggeri con semi di lino e triptofano, ideali per calmare la mente e rilassarsi.",
-    "price": "1.50"
+    "price": "1.50",
+    "category": "snack-salati"
   },
   {
     "image": "img/patatine_noia.jpg",
     "name": "Patatine Piccanti - Noia",
     "title": "Patatine Piccanti",
     "desc": "Un mix di spezie piccanti e gusto intenso per dare energia e spezzare la monotonia.",
-    "price": "1.70"
+    "price": "1.70",
+    "category": "snack-salati"
   }
-
 ]

@@ -7,6 +7,41 @@ let currentPage = 1;
 let productsPerPage = 6; // Number of products to show per page
 let totalPages = 1;
 
+// Allergeni page variables
+let currentFilters = [];
+let allProductsAllergeni = [];
+
+// Initialize filter toggle functionality for mobile
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile filter toggle
+    const filterToggleBtn = document.getElementById('filter-toggle');
+    const filterContent = document.getElementById('filter-content');
+    
+    if (filterToggleBtn && filterContent) {
+        filterToggleBtn.addEventListener('click', function() {
+            filterContent.classList.toggle('active');
+            
+            // Rotate icon animation
+            const icon = filterToggleBtn.querySelector('i');
+            if (icon) {
+                icon.style.transform = filterContent.classList.contains('active') 
+                    ? 'rotate(180deg)' 
+                    : 'rotate(0deg)';
+            }
+        });
+    }
+
+    // Initialize allergeni page if we're on it
+    if (window.location.pathname.includes('allergeni.html')) {
+        loadProductsAllergeni();
+        setupFilterHandlers();
+        updateCart();
+        setupModalHandlers();
+        setupMobileMenuHandlers();
+        setupSmoothScrolling();
+    }
+});
+
 function addCartItems(carrello){
   let cartItems = document.querySelectorAll(".cart-items")[0];
   if(cartItems){
@@ -25,6 +60,290 @@ function updateCartBadge(items) {
   if(badge) {
     badge.innerHTML = items || 0 
   }
+}
+
+// ========== ALLERGENI PAGE FUNCTIONS ==========
+
+// Carica prodotti dal data.json per la pagina allergeni
+async function loadProductsAllergeni() {
+    try {
+        const response = await fetch('data.json');
+        const data = await response.json();
+        allProductsAllergeni = data.prodotti;
+        displayProductsAllergeni(allProductsAllergeni);
+        updateResultsCount(allProductsAllergeni.length);
+    } catch (error) {
+        console.error('Errore nel caricamento dei prodotti:', error);
+    }
+}
+
+// Setup gestori eventi per i filtri allergeni
+function setupFilterHandlers() {
+    const checkboxes = document.querySelectorAll('input[name="allergeni"]');
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleFilterChange);
+    });
+}
+
+// Gestisce i cambiamenti nei filtri allergeni
+function handleFilterChange() {
+    currentFilters = Array.from(document.querySelectorAll('input[name="allergeni"]:checked'))
+        .map(cb => cb.value);
+    
+    const filteredProducts = filterProductsAllergeni(allProductsAllergeni, currentFilters);
+    displayProductsAllergeni(filteredProducts);
+    updateResultsCount(filteredProducts.length);
+}
+
+// Filtra i prodotti basandosi sui filtri selezionati
+function filterProductsAllergeni(products, filters) {
+    if (filters.length === 0) {
+        return products;
+    }
+    
+    return products.filter(product => {
+        return !filters.some(filter => 
+            product.allergeni && product.allergeni.includes(filter)
+        );
+    });
+}
+
+// Mostra i prodotti nella griglia allergeni
+function displayProductsAllergeni(products) {
+    const grid = document.getElementById('products-grid');
+    
+    if (!grid) return;
+    
+    if (products.length === 0) {
+        grid.innerHTML = `
+            <div class="no-results">
+                <div class="no-results-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Nessun prodotto trovato</h3>
+                <p>Prova a modificare i filtri per vedere più prodotti</p>
+            </div>
+        `;
+        return;
+    }
+    
+    grid.innerHTML = products.map(product => `
+        <div class="product-card ${getSafetyClass(product)}" onclick="openProductModal('${product.id}')">
+            <div class="product-image">
+                <img src="${product.immagine}" alt="${product.nome}" loading="lazy">
+                <div class="safety-badge ${getSafetyClass(product)}">
+                    <i class="fas ${getSafetyIcon(product)}"></i>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>${product.nome}</h3>
+                <p class="product-price">€${product.prezzo.toFixed(2)}</p>
+                <div class="allergen-info">
+                    ${getAllergenDisplay(product)}
+                </div>
+                <div class="product-actions">
+                    <button class="btn-detail" onclick="event.stopPropagation(); openProductModal('${product.id}')">
+                        <i class="fas fa-info-circle"></i>
+                        Dettagli
+                    </button>
+                    <button class="btn-cart" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                        <i class="fas fa-cart-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Determina la classe di sicurezza per il prodotto
+function getSafetyClass(product) {
+    if (!product.allergeni || product.allergeni.length === 0) {
+        return 'safe';
+    }
+    
+    const highRiskAllergens = ['glutine', 'frutta-secca', 'sesamo'];
+    const hasHighRisk = product.allergeni.some(allergen => 
+        highRiskAllergens.includes(allergen)
+    );
+    
+    return hasHighRisk ? 'warning' : 'caution';
+}
+
+// Determina l'icona di sicurezza
+function getSafetyIcon(product) {
+    const safetyClass = getSafetyClass(product);
+    switch(safetyClass) {
+        case 'safe': return 'fa-check-circle';
+        case 'caution': return 'fa-exclamation-triangle';
+        case 'warning': return 'fa-exclamation-circle';
+        default: return 'fa-question-circle';
+    }
+}
+
+// Visualizza informazioni allergeni
+function getAllergenDisplay(product) {
+    if (!product.allergeni || product.allergeni.length === 0) {
+        return '<span class="safe-indicator"><i class="fas fa-check"></i> Nessun allergene</span>';
+    }
+    
+    return `<span class="allergen-warning"><i class="fas fa-exclamation-triangle"></i> Contiene: ${product.allergeni.join(', ')}</span>`;
+}
+
+// Aggiorna il conteggio dei risultati
+function updateResultsCount(count) {
+    const countElement = document.getElementById('filtered-count');
+    if (countElement) {
+        countElement.textContent = count;
+    }
+}
+
+// Cancella tutti i filtri
+function clearFilters() {
+    document.querySelectorAll('input[name="allergeni"]').forEach(cb => cb.checked = false);
+    currentFilters = [];
+    displayProductsAllergeni(allProductsAllergeni);
+    updateResultsCount(allProductsAllergeni.length);
+}
+
+// Apre il modal con i dettagli del prodotto
+function openProductModal(productId) {
+    const product = allProductsAllergeni.find(p => p.id === productId);
+    if (!product) return;
+    
+    const modal = document.getElementById('product-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalBody = document.querySelector('.modal-product-details');
+    
+    if (!modal || !modalTitle || !modalBody) return;
+    
+    modalTitle.textContent = product.nome;
+    modalBody.innerHTML = `
+        <div class="modal-image">
+            <img src="${product.immagine}" alt="${product.nome}">
+            <div class="safety-badge ${getSafetyClass(product)}">
+                <i class="fas ${getSafetyIcon(product)}"></i>
+                <span>${getSafetyText(product)}</span>
+            </div>
+        </div>
+        <div class="modal-details">
+            <div class="detail-section">
+                <h4>Descrizione</h4>
+                <p>${product.descrizione}</p>
+            </div>
+            <div class="detail-section">
+                <h4>Prezzo</h4>
+                <p class="price">€${product.prezzo.toFixed(2)}</p>
+            </div>
+            <div class="detail-section allergen-section">
+                <h4>Informazioni Allergeni</h4>
+                ${getAllergenDetails(product)}
+            </div>
+            <div class="modal-actions">
+                <button class="btn-primary" onclick="addToCart('${product.id}')">
+                    <i class="fas fa-cart-plus"></i>
+                    Aggiungi al Carrello
+                </button>
+            </div>
+        </div>
+    `;
+    
+    modal.style.display = 'block';
+}
+
+// Ottiene il testo di sicurezza
+function getSafetyText(product) {
+    const safetyClass = getSafetyClass(product);
+    switch(safetyClass) {
+        case 'safe': return 'Sicuro';
+        case 'caution': return 'Attenzione';
+        case 'warning': return 'Allergeni Presenti';
+        default: return 'Controllare';
+    }
+}
+
+// Ottiene i dettagli degli allergeni per il modal
+function getAllergenDetails(product) {
+    if (!product.allergeni || product.allergeni.length === 0) {
+        return '<p class="safe-message"><i class="fas fa-check-circle"></i> Questo prodotto non contiene allergeni noti.</p>';
+    }
+    
+    return `
+        <div class="allergen-warning-box">
+            <p><i class="fas fa-exclamation-triangle"></i> <strong>Attenzione:</strong> Questo prodotto contiene i seguenti allergeni:</p>
+            <ul class="allergen-list">
+                ${product.allergeni.map(allergen => `
+                    <li><i class="fas fa-circle"></i> ${allergen.charAt(0).toUpperCase() + allergen.slice(1)}</li>
+                `).join('')}
+            </ul>
+            <p class="warning-note">Se soffri di allergie, consulta sempre l'etichetta del prodotto prima del consumo.</p>
+        </div>
+    `;
+}
+
+// Sistema di notifiche
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Gestione modal
+function setupModalHandlers() {
+    const modal = document.getElementById('product-modal');
+    const closeBtn = document.querySelector('.close');
+    
+    if (closeBtn) {
+        closeBtn.onclick = function() {
+            if (modal) modal.style.display = 'none';
+        }
+    }
+    
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+}
+
+// Gestione menu mobile
+function setupMobileMenuHandlers() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mainNav = document.querySelector('.main-nav');
+    
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    }
+}
+
+// Smooth scrolling per i link interni
+function setupSmoothScrolling() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 }
 
 // Enhanced utility functions for better UX
@@ -89,11 +408,14 @@ function addLoadingState(button) {
 
 // Enhanced product rendering with loading states
 function renderProducts(products) {
-  const container = document.querySelectorAll('.product-grid')[0];
+  const container = document.querySelector('.product-grid');
   if (!container) {
-    console.log('No product-grid container found');
+    console.error('No product-grid container found');
     return;
   }
+  
+  console.log('Container found:', container);
+  console.log('Products to render:', products);
   
   // Calculate pagination
   totalPages = Math.ceil(products.length / productsPerPage);
@@ -210,35 +532,6 @@ function handleAddToCart(bottone) {
   }, 500); // Simulate processing time
 }
 
-// Filter products by category
-function filterProducts(category) {
-  if (category === '' || category === 'all') {
-    filteredProducts = [...allProducts];
-  } else {
-    filteredProducts = allProducts.filter(product => {
-      const productName = product.name.toLowerCase();
-      const productTitle = product.title.toLowerCase();
-      const productDesc = product.desc.toLowerCase();
-      
-      switch(category) {
-        case 'dolci':
-          return productName.includes('barretta') || productName.includes('biscotti') || 
-                 productName.includes('caramelle') || productName.includes('wafer') ||
-                 productName.includes('smoothie');
-        case 'salati':
-          return productName.includes('crackers') || productName.includes('patatine') || 
-                 productName.includes('grissini');
-        case 'sani':
-          return productName.includes('mix') || productDesc.includes('omega') ||
-                 productDesc.includes('vitamine') || productDesc.includes('antiossidanti');
-        default:
-          return true;
-      }
-    });
-  }
-  renderProducts(filteredProducts);
-}
-
 // Add pagination functions
 function updatePagination() {
   const paginationContainer = document.querySelector('.pagination');
@@ -304,23 +597,77 @@ function filterProducts(category) {
       const productTitle = product.title.toLowerCase();
       const productDesc = product.desc.toLowerCase();
       
+      // Use category field if available, otherwise fallback to name matching
+      if (product.category) {
+        return product.category === category;
+      }
+      
+      // Fallback to old system for backward compatibility
       switch(category) {
+        case 'snack-dolci':
         case 'dolci':
           return productName.includes('barretta') || productName.includes('biscotti') || 
                  productName.includes('caramelle') || productName.includes('wafer') ||
-                 productName.includes('smoothie');
+                 productName.includes('smoothie') || productName.includes('muffin') ||
+                 productName.includes('brownie') || productName.includes('popcorn') ||
+                 productName.includes('mousse') || productName.includes('gelato');
+        case 'snack-salati':
         case 'salati':
           return productName.includes('crackers') || productName.includes('patatine') || 
-                 productName.includes('grissini');
+                 productName.includes('grissini') || productName.includes('pretzel') ||
+                 productName.includes('wrap');
+        case 'bevande':
+          return productName.includes('smoothie') || productName.includes('succo') ||
+                 productName.includes('tè') || productName.includes('frullato') ||
+                 productName.includes('tisana') || productName.includes('kombucha') ||
+                 productName.includes('cioccolata');
+        case 'healthy':
         case 'sani':
           return productName.includes('mix') || productDesc.includes('omega') ||
-                 productDesc.includes('vitamine') || productDesc.includes('antiossidanti');
+                 productDesc.includes('vitamine') || productDesc.includes('antiossidanti') ||
+                 productName.includes('chips') || productName.includes('barretta proteica') ||
+                 productName.includes('yogurt') || productName.includes('granola') ||
+                 productName.includes('energy balls') || productName.includes('tartine');
         default:
           return true;
       }
     });
   }
   renderProducts(filteredProducts);
+  updatePagination();
+}
+
+// Function to get URL parameters
+function getURLParameter(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(name);
+}
+
+// Function to apply filter from URL parameter
+function applyURLFilter() {
+  const category = getURLParameter('category');
+  if (category) {
+    // Update category select if it exists
+    const categorySelect = document.querySelector('#category');
+    if (categorySelect) {
+      categorySelect.value = category;
+    }
+    
+    // Apply the filter
+    filterProducts(category);
+    
+    // Show notification
+    const categoryNames = {
+      'snack-dolci': 'Snack Dolci',
+      'snack-salati': 'Snack Salati',
+      'bevande': 'Bevande',
+      'healthy': 'Healthy'
+    };
+    
+    if (categoryNames[category]) {
+      showNotification(`Filtro applicato: ${categoryNames[category]}`, 'success');
+    }
+  }
 }
 
 // Sort products
@@ -345,21 +692,28 @@ function sortProducts(sortBy) {
       break;
   }
   renderProducts(filteredProducts);
+  updatePagination();
 }
 
 // Initialize filter and sort event listeners
 function initializeFilters() {
-  const categorySelect = document.querySelector('.filter-options select:first-child');
-  const sortSelect = document.querySelector('.filter-options select:last-child');
+  console.log('Initializing filters...');
+  const categorySelect = document.getElementById('category');
+  const sortSelect = document.getElementById('sort');
+  
+  console.log('Category select:', categorySelect);
+  console.log('Sort select:', sortSelect);
   
   if (categorySelect) {
     categorySelect.addEventListener('change', (e) => {
+      console.log('Category changed to:', e.target.value);
       filterProducts(e.target.value);
     });
   }
   
   if (sortSelect) {
     sortSelect.addEventListener('change', (e) => {
+      console.log('Sort changed to:', e.target.value);
       sortProducts(e.target.value);
     });
   }
@@ -530,6 +884,14 @@ document.addEventListener("DOMContentLoaded", () => {
   addProductItem();
   initializeFilters();
   initializeCartPage(); // Initialize cart page if we're on cart page
+  
+  // Apply filter from URL parameter if present
+  if (window.location.pathname.includes('prodotti.html')) {
+    // Wait a bit for products to load before applying filter
+    setTimeout(() => {
+      applyURLFilter();
+    }, 500);
+  }
   
   // Use event delegation for add-to-cart buttons (single approach to avoid duplicates)
   document.addEventListener('click', (event) => {

@@ -35,6 +35,1050 @@
             </nav>
             
             <div class="header-actions">
+                <button class="search-btn" aria-label="Cerca">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html" class="active">Allergeni</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <!-- Allergen Page Header - Consistent with Site Theme -->
+    <section class="allergen-page">
+        <div class="container">
+            <div class="page-header fade-in">
+                <h1>Informazioni Allergeni</h1>
+                <p>La tua sicurezza è la nostra priorità. Consulta le informazioni dettagliate sugli allergeni presenti nei nostri prodotti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alert Warning - Consistent Style -->
+    <section class="warning-section">
+        <div class="container">
+            <div class="alert-warning fade-in">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="alert-content">
+                    <h3>Avviso Importante</h3>
+                    <p>Le informazioni sugli allergeni sono fornite a scopo informativo. Se hai allergie alimentari severe, ti consigliamo di consultare sempre l'etichetta del prodotto e di contattare il nostro servizio clienti per informazioni aggiornate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products with Allergen Info - Card Layout -->
+    <section class="allergen-products">
+        <div class="container">
+            <h2 class="section-title text-center slide-up">I nostri prodotti e allergeni</h2>
+            <div class="table-responsive">
+                <table class="allergen-table">
+                    <thead>
+                        <tr>
+                            <th>Prodotto</th>
+                            <th><i class="fas fa-wheat"></i> Glutine</th>
+                            <th><i class="fas fa-cheese"></i> Lattosio</th>
+                            <th><i class="fas fa-seedling"></i> Frutta Secca</th>
+                            <th><i class="fas fa-leaf"></i> Soia</th>
+                            <th><i class="fas fa-egg"></i> Uova</th>
+                            <th><i class="fas fa-fish"></i> Pesce</th>
+                            <th><i class="fas fa-pepper-hot"></i> Sesamo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="product-name">Barretta al Cioccolato</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta alla Frutta Secca</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta al Cocco</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Caramelle alla Camomilla</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Mix Frutta Secca</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Biscotti agli Agrumi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Wafer al Matcha</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Smoothie ai Frutti Rossi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Patatine Piccanti</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Crackers Integrali</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legenda -->
+    <section class="legend-section">
+        <div class="container">
+            <div class="legend-card">
+                <h3>Legenda</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="legend-yes">Sì</span>
+                        <span>Allergene presente</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-no">No</span>
+                        <span>Allergene non presente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informazioni Aggiuntive -->
+    <section class="additional-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-factory"></i>
+                    <h3>Produzione</h3>
+                    <p>I nostri prodotti sono realizzati in stabilimenti che potrebbero lavorare anche allergeni non elencati. Contaminazioni crociate sono possibili.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certificazioni</h3>
+                    <p>Tutti i nostri fornitori sono certificati e seguono rigorosi protocolli di sicurezza alimentare per garantire la massima qualità.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Supporto</h3>
+                    <p>Per domande specifiche sugli allergeni o per segnalare problemi, contatta il nostro servizio clienti al numero verde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="allergen-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Hai domande sugli allergeni?</h2>
+                <p>Il nostro team è sempre disponibile per aiutarti con informazioni dettagliate sui nostri prodotti.</p>
+                <a href="contatti.html" class="btn">Contattaci Ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="#" data-category="snack-salati">Snack Salati</a></li>
+                        <li><a href="#" data-category="snack-dolci">Snack Dolci</a></li>
+                        <li><a href="#" data-category="bevande">Bevande</a></li>
+                        <li><a href="#" data-category="healthy">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergeni - MoodBites</title>
+    <meta name="description" content="Informazioni complete sugli allergeni presenti nei nostri snack. La tua sicurezza è la nostra priorità.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html" class="active">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-btn" aria-label="Cerca">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html" class="active">Allergeni</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="allergen-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="slide-up">
+                    <i class="fas fa-shield-alt"></i>
+                    Informazioni Allergeni
+                </h1>
+                <p class="fade-in">La tua sicurezza è la nostra priorità. Consulta le informazioni dettagliate sugli allergeni presenti nei nostri prodotti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avviso Importante -->
+    <section class="warning-section">
+        <div class="container">
+            <div class="warning-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Avviso Importante</h3>
+                <p>Le informazioni sugli allergeni sono fornite a scopo informativo. Se hai allergie alimentari severe, ti consigliamo di consultare sempre l'etichetta del prodotto e di contattare il nostro servizio clienti per informazioni aggiornate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabella Allergeni -->
+    <section class="allergen-table-section">
+        <div class="container">
+            <h2>Tabella Allergeni Prodotti</h2>
+            <div class="table-responsive">
+                <table class="allergen-table">
+                    <thead>
+                        <tr>
+                            <th>Prodotto</th>
+                            <th><i class="fas fa-wheat"></i> Glutine</th>
+                            <th><i class="fas fa-cheese"></i> Lattosio</th>
+                            <th><i class="fas fa-seedling"></i> Frutta Secca</th>
+                            <th><i class="fas fa-leaf"></i> Soia</th>
+                            <th><i class="fas fa-egg"></i> Uova</th>
+                            <th><i class="fas fa-fish"></i> Pesce</th>
+                            <th><i class="fas fa-pepper-hot"></i> Sesamo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="product-name">Barretta al Cioccolato</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta alla Frutta Secca</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta al Cocco</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Caramelle alla Camomilla</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Mix Frutta Secca</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Biscotti agli Agrumi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Wafer al Matcha</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Smoothie ai Frutti Rossi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Patatine Piccanti</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Crackers Integrali</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legenda -->
+    <section class="legend-section">
+        <div class="container">
+            <div class="legend-card">
+                <h3>Legenda</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="legend-yes">Sì</span>
+                        <span>Allergene presente</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-no">No</span>
+                        <span>Allergene non presente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informazioni Aggiuntive -->
+    <section class="additional-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-factory"></i>
+                    <h3>Produzione</h3>
+                    <p>I nostri prodotti sono realizzati in stabilimenti che potrebbero lavorare anche allergeni non elencati. Contaminazioni crociate sono possibili.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certificazioni</h3>
+                    <p>Tutti i nostri fornitori sono certificati e seguono rigorosi protocolli di sicurezza alimentare per garantire la massima qualità.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Supporto</h3>
+                    <p>Per domande specifiche sugli allergeni o per segnalare problemi, contatta il nostro servizio clienti al numero verde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="allergen-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Hai domande sugli allergeni?</h2>
+                <p>Il nostro team è sempre disponibile per aiutarti con informazioni dettagliate sui nostri prodotti.</p>
+                <a href="contatti.html" class="btn">Contattaci Ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="#" data-category="snack-salati">Snack Salati</a></li>
+                        <li><a href="#" data-category="snack-dolci">Snack Dolci</a></li>
+                        <li><a href="#" data-category="bevande">Bevande</a></li>
+                        <li><a href="#" data-category="healthy">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergeni - MoodBites</title>
+    <meta name="description" content="Informazioni complete sugli allergeni presenti nei nostri snack. La tua sicurezza è la nostra priorità.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html" class="active">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="search-btn" aria-label="Cerca">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html" class="active">Allergeni</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="allergen-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="slide-up">
+                    <i class="fas fa-shield-alt"></i>
+                    Informazioni Allergeni
+                </h1>
+                <p class="fade-in">La tua sicurezza è la nostra priorità. Consulta le informazioni dettagliate sugli allergeni presenti nei nostri prodotti.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avviso Importante -->
+    <section class="warning-section">
+        <div class="container">
+            <div class="warning-card">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h3>Avviso Importante</h3>
+                <p>Le informazioni sugli allergeni sono fornite a scopo informativo. Se hai allergie alimentari severe, ti consigliamo di consultare sempre l'etichetta del prodotto e di contattare il nostro servizio clienti per informazioni aggiornate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabella Allergeni -->
+    <section class="allergen-table-section">
+        <div class="container">
+            <h2>Tabella Allergeni Prodotti</h2>
+            <div class="table-responsive">
+                <table class="allergen-table">
+                    <thead>
+                        <tr>
+                            <th>Prodotto</th>
+                            <th><i class="fas fa-wheat"></i> Glutine</th>
+                            <th><i class="fas fa-cheese"></i> Lattosio</th>
+                            <th><i class="fas fa-seedling"></i> Frutta Secca</th>
+                            <th><i class="fas fa-leaf"></i> Soia</th>
+                            <th><i class="fas fa-egg"></i> Uova</th>
+                            <th><i class="fas fa-fish"></i> Pesce</th>
+                            <th><i class="fas fa-pepper-hot"></i> Sesamo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="product-name">Barretta al Cioccolato</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta alla Frutta Secca</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Barretta al Cocco</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Caramelle alla Camomilla</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Mix Frutta Secca</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Biscotti agli Agrumi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Wafer al Matcha</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Smoothie ai Frutti Rossi</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Patatine Piccanti</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                        </tr>
+                        <tr>
+                            <td class="product-name">Crackers Integrali</td>
+                            <td class="allergen-yes">Sì</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-no">No</td>
+                            <td class="allergen-yes">Sì</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legenda -->
+    <section class="legend-section">
+        <div class="container">
+            <div class="legend-card">
+                <h3>Legenda</h3>
+                <div class="legend-items">
+                    <div class="legend-item">
+                        <span class="legend-yes">Sì</span>
+                        <span>Allergene presente</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-no">No</span>
+                        <span>Allergene non presente</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informazioni Aggiuntive -->
+    <section class="additional-info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-factory"></i>
+                    <h3>Produzione</h3>
+                    <p>I nostri prodotti sono realizzati in stabilimenti che potrebbero lavorare anche allergeni non elencati. Contaminazioni crociate sono possibili.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Certificazioni</h3>
+                    <p>Tutti i nostri fornitori sono certificati e seguono rigorosi protocolli di sicurezza alimentare per garantire la massima qualità.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Supporto</h3>
+                    <p>Per domande specifiche sugli allergeni o per segnalare problemi, contatta il nostro servizio clienti al numero verde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="allergen-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Hai domande sugli allergeni?</h2>
+                <p>Il nostro team è sempre disponibile per aiutarti con informazioni dettagliate sui nostri prodotti.</p>
+                <a href="contatti.html" class="btn">Contattaci Ora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Footer -->
+    <footer class="modern-footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,144C960,149,1056,139,1152,122.7C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="#" data-category="snack-salati">Snack Salati</a></li>
+                        <li><a href="#" data-category="snack-dolci">Snack Dolci</a></li>
+                        <li><a href="#" data-category="bevande">Bevande</a></li>
+                        <li><a href="#" data-category="healthy">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allergeni - MoodBites</title>
+    <meta name="description" content="Informazioni complete sugli allergeni presenti nei nostri snack. La tua sicurezza è la nostra priorità.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <img src="img/logo.png" alt="MoodBites Logo" class="logo-img">
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html" class="active">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
                 <button class="user-btn" aria-label="Profilo utente">
                     <i class="fas fa-user"></i>
                 </button>
@@ -202,6 +1246,314 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Gestione filtri allergeni
+        let currentFilters = [];
+        let allProducts = [];
+
+        // Carica i prodotti all'avvio
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            setupFilterHandlers();
+            updateCart();
+        });
+
+        // Carica prodotti dal data.json
+        async function loadProducts() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                allProducts = data.prodotti;
+                displayProducts(allProducts);
+                updateResultsCount(allProducts.length);
+            } catch (error) {
+                console.error('Errore nel caricamento dei prodotti:', error);
+            }
+        }
+
+        // Setup gestori eventi per i filtri
+        function setupFilterHandlers() {
+            const checkboxes = document.querySelectorAll('input[name="allergeni"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', handleFilterChange);
+            });
+        }
+
+        // Gestisce i cambiamenti nei filtri
+        function handleFilterChange() {
+            currentFilters = Array.from(document.querySelectorAll('input[name="allergeni"]:checked'))
+                .map(cb => cb.value);
+            
+            const filteredProducts = filterProducts(allProducts, currentFilters);
+            displayProducts(filteredProducts);
+            updateResultsCount(filteredProducts.length);
+        }
+
+        // Filtra i prodotti basandosi sui filtri selezionati
+        function filterProducts(products, filters) {
+            if (filters.length === 0) {
+                return products;
+            }
+            
+            return products.filter(product => {
+                return !filters.some(filter => 
+                    product.allergeni && product.allergeni.includes(filter)
+                );
+            });
+        }
+
+        // Mostra i prodotti nella griglia
+        function displayProducts(products) {
+            const grid = document.getElementById('products-grid');
+            
+            if (products.length === 0) {
+                grid.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Nessun prodotto trovato</h3>
+                        <p>Prova a modificare i filtri per vedere più prodotti</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = products.map(product => `
+                <div class="product-card ${getSafetyClass(product)}" onclick="openProductModal('${product.id}')">
+                    <div class="product-image">
+                        <img src="${product.immagine}" alt="${product.nome}" loading="lazy">
+                        <div class="safety-badge ${getSafetyClass(product)}">
+                            <i class="fas ${getSafetyIcon(product)}"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>${product.nome}</h3>
+                        <p class="product-price">€${product.prezzo.toFixed(2)}</p>
+                        <div class="allergen-info">
+                            ${getAllergenDisplay(product)}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-detail" onclick="event.stopPropagation(); openProductModal('${product.id}')">
+                                <i class="fas fa-info-circle"></i>
+                                Dettagli
+                            </button>
+                            <button class="btn-cart" onclick="event.stopPropagation(); addToCart('${product.id}')">
+                                <i class="fas fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Determina la classe di sicurezza per il prodotto
+        function getSafetyClass(product) {
+            if (!product.allergeni || product.allergeni.length === 0) {
+                return 'safe';
+            }
+            
+            const highRiskAllergens = ['glutine', 'frutta-secca', 'sesamo'];
+            const hasHighRisk = product.allergeni.some(allergen => 
+                highRiskAllergens.includes(allergen)
+            );
+            
+            return hasHighRisk ? 'warning' : 'caution';
+        }
+
+        // Determina l'icona di sicurezza
+        function getSafetyIcon(product) {
+            const safetyClass = getSafetyClass(product);
+            switch(safetyClass) {
+                case 'safe': return 'fa-check-circle';
+                case 'caution': return 'fa-exclamation-triangle';
+                case 'warning': return 'fa-exclamation-circle';
+                default: return 'fa-question-circle';
+            }
+        }
+
+        // Visualizza informazioni allergeni
+        function getAllergenDisplay(product) {
+            if (!product.allergeni || product.allergeni.length === 0) {
+                return '<span class="safe-indicator"><i class="fas fa-check"></i> Nessun allergene</span>';
+            }
+            
+            return `<span class="allergen-warning"><i class="fas fa-exclamation-triangle"></i> Contiene: ${product.allergeni.join(', ')}</span>`;
+        }
+
+        // Aggiorna il conteggio dei risultati
+        function updateResultsCount(count) {
+            document.getElementById('filtered-count').textContent = count;
+        }
+
+        // Cancella tutti i filtri
+        function clearFilters() {
+            document.querySelectorAll('input[name="allergeni"]').forEach(cb => cb.checked = false);
+            currentFilters = [];
+            displayProducts(allProducts);
+            updateResultsCount(allProducts.length);
+        }
+
+        // Apre il modal con i dettagli del prodotto
+        function openProductModal(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modal = document.getElementById('product-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalBody = document.querySelector('.modal-product-details');
+            
+            modalTitle.textContent = product.nome;
+            modalBody.innerHTML = `
+                <div class="modal-image">
+                    <img src="${product.immagine}" alt="${product.nome}">
+                    <div class="safety-badge ${getSafetyClass(product)}">
+                        <i class="fas ${getSafetyIcon(product)}"></i>
+                        <span>${getSafetyText(product)}</span>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <div class="detail-section">
+                        <h4>Descrizione</h4>
+                        <p>${product.descrizione}</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>Prezzo</h4>
+                        <p class="price">€${product.prezzo.toFixed(2)}</p>
+                    </div>
+                    <div class="detail-section allergen-section">
+                        <h4>Informazioni Allergeni</h4>
+                        ${getAllergenDetails(product)}
+                    </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="addToCart('${product.id}')">
+                            <i class="fas fa-cart-plus"></i>
+                            Aggiungi al Carrello
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // Ottiene il testo di sicurezza
+        function getSafetyText(product) {
+            const safetyClass = getSafetyClass(product);
+            switch(safetyClass) {
+                case 'safe': return 'Sicuro';
+                case 'caution': return 'Attenzione';
+                case 'warning': return 'Allergeni Presenti';
+                default: return 'Controllare';
+            }
+        }
+
+        // Ottiene i dettagli degli allergeni per il modal
+        function getAllergenDetails(product) {
+            if (!product.allergeni || product.allergeni.length === 0) {
+                return '<p class="safe-message"><i class="fas fa-check-circle"></i> Questo prodotto non contiene allergeni noti.</p>';
+            }
+            
+            return `
+                <div class="allergen-warning-box">
+                    <p><i class="fas fa-exclamation-triangle"></i> <strong>Attenzione:</strong> Questo prodotto contiene i seguenti allergeni:</p>
+                    <ul class="allergen-list">
+                        ${product.allergeni.map(allergen => `
+                            <li><i class="fas fa-circle"></i> ${allergen.charAt(0).toUpperCase() + allergen.slice(1)}</li>
+                        `).join('')}
+                    </ul>
+                    <p class="warning-note">Se soffri di allergie, consulta sempre l'etichetta del prodotto prima del consumo.</p>
+                </div>
+            `;
+        }
+
+        // Gestione carrello
+        function addToCart(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: productId, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+            
+            // Feedback visivo
+            showNotification('Prodotto aggiunto al carrello!', 'success');
+        }
+
+        function updateCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cart-count').textContent = totalItems;
+        }
+
+        // Sistema di notifiche
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
+                <span>${message}</span>
+                <button onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Gestione modal
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('product-modal');
+            const closeBtn = document.querySelector('.close');
+            
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            }
+            
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            }
+        });
+
+        // Gestione menu mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.querySelector('.main-nav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            }
+        });
+
+        // Smooth scrolling per i link interni
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
