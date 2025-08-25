@@ -11,36 +11,188 @@ let totalPages = 1;
 let currentFilters = [];
 let allProductsAllergeni = [];
 
-// Initialize filter toggle functionality for mobile
+// Initialize filter toggle functionality for mobile and universal mobile menu
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile filter toggle
-    const filterToggleBtn = document.getElementById('filter-toggle');
-    const filterContent = document.getElementById('filter-content');
+    // Universal mobile menu functionality for all pages
+    setupMobileMenuHandlers();
     
-    if (filterToggleBtn && filterContent) {
-        filterToggleBtn.addEventListener('click', function() {
-            filterContent.classList.toggle('active');
-            
-            // Rotate icon animation
-            const icon = filterToggleBtn.querySelector('i');
-            if (icon) {
-                icon.style.transform = filterContent.classList.contains('active') 
-                    ? 'rotate(180deg)' 
-                    : 'rotate(0deg)';
-            }
-        });
-    }
+    // Initialize cart badge
+    updateCartBadge([]);
 
     // Initialize allergeni page if we're on it
     if (window.location.pathname.includes('allergeni.html')) {
         loadProductsAllergeni();
         setupFilterHandlers();
-        updateCart();
         setupModalHandlers();
-        setupMobileMenuHandlers();
         setupSmoothScrolling();
     }
+    
+    // Initialize prodotti page if we're on it
+    if (window.location.pathname.includes('prodotti.html')) {
+        addProductItem();
+        setupModalHandlers();
+        // Try multiple times to setup dropdowns
+        setupFilterDropdowns();
+        setTimeout(setupFilterDropdowns, 100);
+        setTimeout(setupFilterDropdowns, 500);
+        setTimeout(setupFilterDropdowns, 1000);
+    }
 });
+
+// Setup filter dropdown functionality - FIXED VERSION
+function setupFilterDropdowns() {
+    console.log('=== DROPDOWN SETUP START ===');
+    console.log('Current pathname:', window.location.pathname);
+    console.log('Includes prodotti.html:', window.location.pathname.includes('prodotti.html'));
+    
+    // Check if we're on the right page
+    if (!window.location.pathname.includes('prodotti.html')) {
+        console.log('❌ Not on products page');
+        return;
+    }
+
+    // Get elements
+    const categoryBtn = document.querySelector('#category-btn');
+    const sortBtn = document.querySelector('#sort-btn');
+    const categoryDropdown = document.querySelector('#category-dropdown');
+    const sortDropdown = document.querySelector('#sort-dropdown');
+    const clearFiltersBtn = document.querySelector('#clear-filters');
+    
+    console.log('=== ELEMENT SEARCH RESULTS ===');
+    console.log('categoryBtn:', categoryBtn);
+    console.log('sortBtn:', sortBtn);
+    console.log('categoryDropdown:', categoryDropdown);
+    console.log('sortDropdown:', sortDropdown);
+    console.log('clearFiltersBtn:', clearFiltersBtn);
+
+    if (!categoryBtn || !sortBtn || !categoryDropdown || !sortDropdown) {
+        console.log('❌ Missing elements, aborting setup');
+        console.log('Will retry later...');
+        return;
+    }
+    
+    console.log('✅ All elements found! Setting up click handlers...');
+    
+    let currentCategory = '';
+    let currentSort = '';
+    
+    // Category button handler
+    categoryBtn.onclick = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('Category button clicked!');
+        
+        // Close sort dropdown
+        sortDropdown.classList.remove('show');
+        sortBtn.classList.remove('active');
+        
+        // Toggle category dropdown
+        if (categoryDropdown.classList.contains('show')) {
+            categoryDropdown.classList.remove('show');
+            categoryBtn.classList.remove('active');
+        } else {
+            categoryDropdown.classList.add('show');
+            categoryBtn.classList.add('active');
+        }
+    };
+    
+    // Sort button handler
+    sortBtn.onclick = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('Sort button clicked!');
+        
+        // Close category dropdown
+        categoryDropdown.classList.remove('show');
+        categoryBtn.classList.remove('active');
+        
+        // Toggle sort dropdown
+        if (sortDropdown.classList.contains('show')) {
+            sortDropdown.classList.remove('show');
+            sortBtn.classList.remove('active');
+        } else {
+            sortDropdown.classList.add('show');
+            sortBtn.classList.add('active');
+        }
+    };
+    
+    // Category options
+    categoryDropdown.querySelectorAll('.filter-option').forEach(option => {
+        option.onclick = function() {
+            const value = this.dataset.value;
+            console.log('Category selected:', value);
+            
+            currentCategory = value;
+            const span = categoryBtn.querySelector('span');
+            if (span) span.textContent = value ? this.textContent : 'Categoria';
+            
+            categoryDropdown.classList.remove('show');
+            categoryBtn.classList.remove('active');
+            
+            // Apply the actual filtering
+            filterProducts(value);
+            
+            if (clearFiltersBtn) {
+                clearFiltersBtn.style.display = (currentCategory || currentSort) ? 'flex' : 'none';
+            }
+        };
+    });
+    
+    // Sort options
+    sortDropdown.querySelectorAll('.filter-option').forEach(option => {
+        option.onclick = function() {
+            const value = this.dataset.value;
+            console.log('Sort selected:', value);
+            
+            currentSort = value;
+            const span = sortBtn.querySelector('span');
+            if (span) span.textContent = value ? this.textContent : 'Ordina per';
+            
+            sortDropdown.classList.remove('show');
+            sortBtn.classList.remove('active');
+            
+            // Apply the actual sorting
+            if (value) {
+                sortProducts(value);
+            }
+            
+            if (clearFiltersBtn) {
+                clearFiltersBtn.style.display = (currentCategory || currentSort) ? 'flex' : 'none';
+            }
+        };
+    });
+    
+    // Clear button
+    if (clearFiltersBtn) {
+        clearFiltersBtn.onclick = function() {
+            console.log('Clear filters clicked');
+            currentCategory = '';
+            currentSort = '';
+            
+            const categorySpan = categoryBtn.querySelector('span');
+            const sortSpan = sortBtn.querySelector('span');
+            if (categorySpan) categorySpan.textContent = 'Categoria';
+            if (sortSpan) sortSpan.textContent = 'Ordina per';
+            
+            clearFiltersBtn.style.display = 'none';
+            
+            // Reset to show all products
+            filterProducts('');
+        };
+    }
+    
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.filter-dropdown')) {
+            categoryDropdown.classList.remove('show');
+            sortDropdown.classList.remove('show');
+            categoryBtn.classList.remove('active');
+            sortBtn.classList.remove('active');
+        }
+    });
+    
+    console.log('✅ Dropdown setup complete!');
+}
 
 function addCartItems(carrello){
   let cartItems = document.querySelectorAll(".cart-items")[0];
@@ -317,15 +469,32 @@ function setupModalHandlers() {
     }
 }
 
-// Gestione menu mobile
+// Gestione menu mobile universale
 function setupMobileMenuHandlers() {
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mainNav = document.querySelector('.main-nav');
+    const mobileMenu = document.querySelector('.mobile-menu');
     
-    if (mobileMenuBtn) {
+    if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', function() {
-            mainNav.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
             this.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            }
         });
     }
 }

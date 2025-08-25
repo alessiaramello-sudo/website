@@ -78,44 +78,57 @@
             </div>
         </div>
         
+        <!-- Mobile-First Filter Bar -->
+        <div class="filter-bar-wrapper">
+            <div class="container">
+                <div class="filter-bar">
+                    <div class="filter-bar-left">
+                        <span class="results-count" id="results-count">Mostra tutti i prodotti</span>
+                    </div>
+                    <div class="filter-bar-right">
+                        <div class="filter-dropdown">
+                            <button class="filter-btn" id="category-btn">
+                                <i class="fas fa-tags"></i>
+                                <span>Categoria</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="filter-dropdown-content" id="category-dropdown">
+                                <div class="filter-option" data-value="">Tutte le categorie</div>
+                                <div class="filter-option" data-value="snack-dolci">🍫 Snack Dolci</div>
+                                <div class="filter-option" data-value="snack-salati">🥨 Snack Salati</div>
+                                <div class="filter-option" data-value="bevande">🥤 Bevande</div>
+                                <div class="filter-option" data-value="healthy">🥜 Healthy</div>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-dropdown">
+                            <button class="filter-btn" id="sort-btn">
+                                <i class="fas fa-sort"></i>
+                                <span>Ordina per</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="filter-dropdown-content" id="sort-dropdown">
+                                <div class="filter-option" data-value="">Ordine predefinito</div>
+                                <div class="filter-option" data-value="prezzo-basso">💰 Prezzo: basso → alto</div>
+                                <div class="filter-option" data-value="prezzo-alto">💰 Prezzo: alto → basso</div>
+                                <div class="filter-option" data-value="popolari">⭐ Più popolari</div>
+                                <div class="filter-option" data-value="nome">🔤 Nome A-Z</div>
+                            </div>
+                        </div>
+                        
+                        <button class="clear-filters-btn" id="clear-filters" style="display: none;">
+                            <i class="fas fa-times"></i>
+                            <span>Pulisci</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- Main Content Area - Full Width -->
         <div class="products-layout-wrapper">
             <div class="products-layout">
-                <!-- Sidebar Filters (UX Best Practice) -->
-                <aside class="filters-sidebar">
-                    <div class="filter-toggle">
-                        <span>Filtri</span>
-                        <button class="filter-toggle-btn" id="filter-toggle">
-                            <i class="fas fa-sliders-h"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="filter-content" id="filter-content">
-                        <div class="filter-group">
-                            <label for="category">Categoria</label>
-                            <select id="category" aria-label="Filtra per categoria">
-                                <option value="">Tutte le categorie</option>
-                                <option value="snack-dolci">🍫 Snack Dolci</option>
-                                <option value="snack-salati">🥨 Snack Salati</option>
-                                <option value="bevande">🥤 Bevande</option>
-                                <option value="healthy">🥜 Healthy</option>
-                            </select>
-                        </div>
-                        
-                        <div class="filter-group">
-                            <label for="sort">Ordinamento</label>
-                            <select id="sort" aria-label="Ordina prodotti">
-                                <option value="">Ordina per</option>
-                                <option value="prezzo-basso">💰 Prezzo: basso → alto</option>
-                                <option value="prezzo-alto">💰 Prezzo: alto → basso</option>
-                                <option value="popolari">⭐ Più popolari</option>
-                                <option value="nome">🔤 Nome A-Z</option>
-                            </select>
-                        </div>
-                    </div>
-                </aside>
-                
-                <!-- Main Products Area -->
+                <!-- Main Products Area (No Sidebar) -->
                 <main class="products-main">
                     <div class="product-grid fade-in">
                         <!-- Products will be loaded here by JavaScript -->
