@@ -1,31 +1,22 @@
 console.log("cart", JSON.parse(localStorage['cart'] || '[]'))
 
-// Global variables
 let allProducts = [];
 let filteredProducts = [];
 let currentPage = 1;
-let productsPerPage = 6; // Number of products to show per page
+let productsPerPage = 6;
 let totalPages = 1;
 
-// Allergeni page variables
 let currentFilters = [];
 let allProductsAllergeni = [];
 
-// Initialize filter toggle functionality for mobile and universal mobile menu
 document.addEventListener('DOMContentLoaded', function() {
-    // Universal mobile menu functionality for all pages
     setupMobileMenuHandlers();
-    
-    // Initialize cart badge
     const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
     updateCartBadge(existingCart);
-
-    // Initialize featured products on home page
     if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/website/')) {
         initializeFeaturedProducts();
     }
 
-    // Initialize allergeni page if we're on it
     if (window.location.pathname.includes('allergeni.html')) {
         loadProductsAllergeni();
         setupFilterHandlers();
@@ -33,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setupSmoothScrolling();
     }
     
-    // Initialize prodotti page if we're on it
     if (window.location.pathname.includes('prodotti.html')) {
         addProductItem();
         setupModalHandlers();
@@ -50,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Setup filter dropdown functionality - FIXED VERSION
 function setupFilterDropdowns() {
     console.log('=== DROPDOWN SETUP START ===');
     console.log('Current pathname:', window.location.pathname);
@@ -62,7 +51,6 @@ function setupFilterDropdowns() {
         return;
     }
 
-    // Get elements
     const categoryBtn = document.querySelector('#category-btn');
     const sortBtn = document.querySelector('#sort-btn');
     const categoryDropdown = document.querySelector('#category-dropdown');
@@ -242,9 +230,6 @@ function updateCartBadge(items) {
   }
 }
 
-// ========== ALLERGENI PAGE FUNCTIONS ==========
-
-// Carica prodotti dal data.json per la pagina allergeni
 async function loadProductsAllergeni() {
     try {
         const response = await fetch('data.json');
@@ -1066,8 +1051,8 @@ function loadCartPage() {
           <i class="fas fa-shopping-cart"></i>
           <h3>Il tuo carrello è vuoto</h3>
           <p class="text-secondary mb-medium">Aggiungi alcuni snack per iniziare!</p>
-          <a href="prodotti.html" class="btn">
-            <i class="fas fa-arrow-left"></i>
+          <a href="prodotti.html" class="btn btn-large ">
+            <i class="fas fa-arrow-left "></i>
             Continua lo shopping
           </a>
         </div>
@@ -1211,11 +1196,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ===== PRODUCT DETAIL PAGE FUNCTIONALITY =====
-
 let currentProduct = null;
-
-// Initialize featured products on home page
 function initializeFeaturedProducts() {
     const featuredGrid = document.getElementById('featured-products');
     if (featuredGrid) {
