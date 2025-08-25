@@ -1,5 +1,6 @@
 [
   {
+    "id": "barretta-cioccolato",
     "image": "img/barretta-cioccolato.jpg",
     "name": "Barretta al cioccolato - Solitudine",
     "title": "Barretta Cioccolato",
@@ -8,6 +9,7 @@
     "category": "snack-dolci"
   },
   {
+    "id": "barretta-frutta-secca",
     "image": "img/barretta-frutta.jpg",
     "name": "Barretta alla frutta secca - Ansia",
     "title": "Barretta alla Frutta Secca",
@@ -16,6 +18,7 @@
     "category": "healthy"
   },
   {
+    "id": "barretta-cocco",
     "image": "img/barretta_tristezza.jpg",
     "name": "Barretta al Cocco - Tristezza",
     "title": "Barretta al cocco - Tristezza",
@@ -24,6 +27,7 @@
     "category": "snack-dolci"
   },
   {
+    "id": "caramelle-camomilla",
     "image": "img/caramelle_ansia.jpg",
     "name": "Caramelle - Ansia",
     "title": "Caramelle alla Camomilla - Ansia",
@@ -32,6 +36,7 @@
     "category": "snack-dolci"
   },
   {
+    "id": "mix-frutta-secca",
     "image": "img/mix_vitalita.jpg",
     "name": "Mix Frutta Secca - Stanchezza",
     "title": "Mix Frutta Secca - Stanchezza",
@@ -40,6 +45,7 @@
     "category": "healthy"
   },
   {
+    "id": "biscotti-agrumi",
     "image": "img/biscotti_allegria.jpg",
     "name": "Biscotti - Allegria",
     "title": "Biscotti agli Agrumi - Allegria",
@@ -48,6 +54,7 @@
     "category": "snack-dolci"
   },
   {
+    "id": "wafer-matcha",
     "image": "img/wafer_concentrazione.jpg",
     "name": "Wafer - Concentrazione",
     "title": "Wafer al Matcha - Concentrazione",
@@ -56,6 +63,7 @@
     "category": "snack-dolci"
   },
   {
+    "id": "smoothie-frutti-rossi",
     "image": "img/smoothie_amore.jpg",
     "name": "Smoothie - Affetto",
     "title": "Smoothie ai Frutti Rossi - Affetto",
@@ -64,6 +72,7 @@
     "category": "bevande"
   },
   {
+    "id": "crackers-relax",
     "image": "img/crackers-relax.jpg",
     "name": "Crackers Relax - Stress",
     "title": "Crackers Relax",
@@ -72,6 +81,7 @@
     "category": "snack-salati"
   },
   {
+    "id": "patatine-energizzanti",
     "image": "img/patatine-energetiche.jpg",
     "name": "Patatine Energizzanti - Noia",
     "title": "Patatine Energizzanti",
@@ -80,6 +90,7 @@
     "category": "snack-salati"
   },
   {
+    "id": "grissini-croccanti",
     "image": "img/grissini_stress.jpg",
     "name": "Grissini Croccanti - Stress",
     "title": "Grissini Croccanti",
@@ -88,6 +99,7 @@
     "category": "snack-salati"
   },
   {
+    "id": "patatine-piccanti",
     "image": "img/patatine_noia.jpg",
     "name": "Patatine Piccanti - Noia",
     "title": "Patatine Piccanti",

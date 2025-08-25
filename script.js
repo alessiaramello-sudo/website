@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize cart badge
     updateCartBadge([]);
 
+    // Initialize featured products on home page
+    if (window.location.pathname.includes('index.html') || window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/website/')) {
+        initializeFeaturedProducts();
+    }
+
     // Initialize allergeni page if we're on it
     if (window.location.pathname.includes('allergeni.html')) {
         loadProductsAllergeni();
@@ -36,6 +41,11 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(setupFilterDropdowns, 100);
         setTimeout(setupFilterDropdowns, 500);
         setTimeout(setupFilterDropdowns, 1000);
+    }
+    
+    // Initialize product detail page if we're on it
+    if (window.location.pathname.includes('dettaglio-prodotto.html')) {
+        initializeProductDetailPage();
     }
 });
 
@@ -280,7 +290,7 @@ function displayProductsAllergeni(products) {
     }
     
     grid.innerHTML = products.map(product => `
-        <div class="product-card ${getSafetyClass(product)}" onclick="openProductModal('${product.id}')">
+        <div class="product-card ${getSafetyClass(product)}" onclick="navigateToProduct('${product.id}')">>
             <div class="product-image">
                 <img src="${product.immagine}" alt="${product.nome}" loading="lazy">
                 <div class="safety-badge ${getSafetyClass(product)}">
@@ -294,7 +304,7 @@ function displayProductsAllergeni(products) {
                     ${getAllergenDisplay(product)}
                 </div>
                 <div class="product-actions">
-                    <button class="btn-detail" onclick="event.stopPropagation(); openProductModal('${product.id}')">
+                    <button class="btn-detail" onclick="event.stopPropagation(); navigateToProduct('${product.id}')">>
                         <i class="fas fa-info-circle"></i>
                         Dettagli
                     </button>
@@ -607,14 +617,22 @@ function renderProducts(products) {
     productsToShow.forEach((prodotto, index) => {
       // Find the index in the allProducts array for proper data-product-index
       const globalIndex = allProducts.findIndex(p => p === prodotto);
+      const productId = prodotto.id; // Use the fixed ID from data.json
       const item = document.createElement('div');
       item.classList.add("product-card", "fade-in", "hover-lift");
+      
+      // Add click handler for navigation to product details
+      item.style.cursor = 'pointer';
+      item.onclick = function() {
+        navigateToProduct(productId);
+      };
+      
       item.innerHTML = `
         <img src="${prodotto.image || 'img/prodotto1.jpg'}" alt="${prodotto.name || 'Product'}" loading="lazy">
         <h3>${prodotto.title || 'Untitled'}</h3>
         <p class="desc">${prodotto.desc || ''}</p>
         <p class="price">€${prodotto.price || '0.00'}</p>
-        <button class="add-to-cart hover-scale" data-product-index="${globalIndex}">
+        <button class="add-to-cart hover-scale" data-product-index="${globalIndex}" onclick="event.stopPropagation();">
           <i class="fas fa-cart-plus"></i>
           Aggiungi al Carrello
         </button>
@@ -635,6 +653,13 @@ function renderProducts(products) {
 }
 
 function addProductItem(){
+  // Check if we're on the products page and the container exists
+  const container = document.querySelector('.product-grid');
+  if (!container) {
+    console.log('Not on products page or no product-grid container found, skipping renderProducts');
+    return;
+  }
+  
   fetch('data.json')
     .then(res => res.json())
     .then(prodotti => {
@@ -683,6 +708,49 @@ function handleAddToCart(bottone) {
       
       // Add visual feedback to button
       bottone.innerHTML = '<i class="fas fa-check"></i> Aggiunto!';
+
+// Add to cart by product ID
+function addToCart(productId) {
+  console.log('Adding product to cart:', productId);
+  
+  // Load product data
+  loadProductsData().then(products => {
+    // Find product by ID using the fixed ID from data.json
+    const product = products.find(p => p.id === productId);
+    
+    if (product) {
+      let carrello = JSON.parse(localStorage.getItem('cart') || '[]');
+      
+      // Convert to expected format
+      const cartProduct = {
+        name: product.name || product.title,
+        title: product.title || product.name,
+        price: parseFloat(product.price),
+        image: product.image,
+        desc: product.desc,
+        category: product.category,
+        id: productId
+      };
+      
+      carrello.push(cartProduct);
+      localStorage.setItem('cart', JSON.stringify(carrello));
+      
+      // Update cart badge
+      updateCartBadge(carrello);
+      
+      // Show success notification
+      showNotification(`${cartProduct.name} è stato aggiunto al carrello!`, 'success');
+      
+      console.log('Product added to cart successfully');
+    } else {
+      console.error('Product not found:', productId);
+      showNotification('Errore: prodotto non trovato', 'error');
+    }
+  }).catch(error => {
+    console.error('Error adding product to cart:', error);
+    showNotification('Errore durante l\'aggiunta al carrello', 'error');
+  });
+}
       bottone.style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
       
       // Reset button after 2 seconds
@@ -1071,4 +1139,372 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// ===== PRODUCT DETAIL PAGE FUNCTIONALITY =====
+
+let currentProduct = null;
+
+// Initialize featured products on home page
+function initializeFeaturedProducts() {
+    const featuredGrid = document.getElementById('featured-products');
+    if (featuredGrid) {
+        loadProductsData().then(products => {
+            // Select first 3 products as featured
+            const featuredProducts = products.slice(0, 3);
+            displayFeaturedProducts(featuredProducts, featuredGrid);
+        }).catch(error => {
+            console.error('Error loading featured products:', error);
+        });
+    }
+}
+
+// Display featured products
+function displayFeaturedProducts(products, container) {
+    container.innerHTML = products.map(product => {
+        const productId = product.id; // Use the fixed ID from data.json
+        return `
+            <div class="product-card" onclick="navigateToProduct('${productId}')">
+                <img src="${product.image}" alt="${product.name || product.title}">
+                <h3>${product.name || product.title}</h3>
+                <p class="price">€${parseFloat(product.price).toFixed(2)}</p>
+                <button class="btn-small" onclick="event.stopPropagation(); addToCartFromProduct('${productId}')">
+                    Aggiungi al carrello
+                </button>
+            </div>
+        `;
+    }).join('');
+}
+
+// Add to cart from product card
+function addToCartFromProduct(productId) {
+    addToCart(productId);
+    
+    // Show visual feedback
+    const event = window.event;
+    if (event && event.target) {
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Aggiunto!';
+        button.style.background = 'var(--success-color)';
+        
+        setTimeout(() => {
+            button.textContent = originalText;
+            button.style.background = '';
+        }, 1500);
+    }
+}
+
+// Initialize product detail page
+function initializeProductDetailPage() {
+    console.log('Initializing product detail page');
+    
+    // Get product ID from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    const productName = urlParams.get('name');
+    
+    if (productId) {
+        loadProductById(productId);
+    } else if (productName) {
+        loadProductByName(productName);
+    } else {
+        showProductNotFound();
+    }
+}
+
+// Load product by ID
+function loadProductById(productId) {
+    console.log('Loading product by ID:', productId);
+    
+    // First try to find in allProductsAllergeni (if available)
+    if (typeof allProductsAllergeni !== 'undefined' && allProductsAllergeni.length > 0) {
+        const product = allProductsAllergeni.find(p => p.id === productId);
+        if (product) {
+            displayProductDetails(product);
+            return;
+        }
+    }
+    
+    // If not found, load from data.json
+    loadProductsData().then(products => {
+        const product = products.find(p => p.id === productId);
+        
+        if (product) {
+            // Convert to expected format
+            const formattedProduct = {
+                id: productId,
+                nome: product.name || product.title,
+                descrizione: product.desc,
+                prezzo: parseFloat(product.price),
+                immagine: product.image,
+                categoria: product.category,
+                allergeni: product.allergens || []
+            };
+            displayProductDetails(formattedProduct);
+        } else {
+            showProductNotFound();
+        }
+    }).catch(error => {
+        console.error('Error loading product:', error);
+        showProductNotFound();
+    });
+}
+
+// Load product by name
+function loadProductByName(productName) {
+    console.log('Loading product by name:', productName);
+    
+    loadProductsData().then(products => {
+        const product = products.find(p => 
+            (p.name && p.name.toLowerCase() === productName.toLowerCase()) ||
+            (p.title && p.title.toLowerCase() === productName.toLowerCase())
+        );
+        
+        if (product) {
+            const productId = generateProductId(product.name || product.title);
+            const formattedProduct = {
+                id: productId,
+                nome: product.name || product.title,
+                descrizione: product.desc,
+                prezzo: parseFloat(product.price),
+                immagine: product.image,
+                categoria: product.category,
+                allergeni: product.allergens || []
+            };
+            displayProductDetails(formattedProduct);
+        } else {
+            showProductNotFound();
+        }
+    }).catch(error => {
+        console.error('Error loading product:', error);
+        showProductNotFound();
+    });
+}
+
+// Load products data from JSON
+async function loadProductsData() {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) {
+            throw new Error('Failed to load products data');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error loading products data:', error);
+        throw error;
+    }
+}
+
+// Generate product ID from name
+function generateProductId(name) {
+    return name.toLowerCase()
+        .replace(/[àáâãäå]/g, 'a')
+        .replace(/[èéêë]/g, 'e')
+        .replace(/[ìíîï]/g, 'i')
+        .replace(/[òóôõö]/g, 'o')
+        .replace(/[ùúûü]/g, 'u')
+        .replace(/[ç]/g, 'c')
+        .replace(/[ñ]/g, 'n')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+}
+
+// Display product details
+function displayProductDetails(product) {
+    console.log('Displaying product details:', product);
+    currentProduct = product;
+    
+    // Hide loading state and show content
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('product-content').style.display = 'block';
+    
+    // Update page title and breadcrumb
+    document.getElementById('page-title').textContent = `${product.nome} - MoodBites`;
+    document.getElementById('breadcrumb-product').textContent = product.nome;
+    
+    // Update product image
+    const productImage = document.getElementById('product-image');
+    productImage.src = product.immagine;
+    productImage.alt = product.nome;
+    
+    // Update safety badge
+    const safetyBadge = document.getElementById('product-safety-badge');
+    const safetyClass = getSafetyClass(product);
+    safetyBadge.className = `safety-badge ${safetyClass}`;
+    safetyBadge.innerHTML = `
+        <i class="fas ${getSafetyIcon(product)}"></i>
+        <span>${getSafetyText(product)}</span>
+    `;
+    
+    // Update product info
+    document.getElementById('product-category-badge').textContent = getCategoryDisplayName(product.categoria);
+    document.getElementById('product-title').textContent = product.nome;
+    document.getElementById('product-description').textContent = product.descrizione;
+    document.getElementById('product-price').textContent = `€${product.prezzo.toFixed(2)}`;
+    
+    // Update detailed description
+    document.getElementById('detailed-description-text').textContent = product.descrizione;
+    
+    // Update allergen details
+    updateAllergenDetails(product);
+    
+    // Update add to cart button
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    addToCartBtn.onclick = () => addProductToCart();
+}
+
+// Update allergen details
+function updateAllergenDetails(product) {
+    const allergenDetailsContainer = document.getElementById('allergen-details');
+    
+    if (!product.allergeni || product.allergeni.length === 0) {
+        allergenDetailsContainer.innerHTML = `
+            <div class="safe-message">
+                <i class="fas fa-check-circle"></i>
+                Questo prodotto non contiene allergeni noti.
+            </div>
+        `;
+    } else {
+        allergenDetailsContainer.innerHTML = `
+            <div class="allergen-warning-box">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Attenzione:</strong> Questo prodotto contiene i seguenti allergeni:</p>
+                <ul class="allergen-list">
+                    ${product.allergeni.map(allergen => `
+                        <li><i class="fas fa-circle"></i> ${allergen.charAt(0).toUpperCase() + allergen.slice(1)}</li>
+                    `).join('')}
+                </ul>
+                <p class="warning-note">Se soffri di allergie, consulta sempre l'etichetta del prodotto prima del consumo.</p>
+            </div>
+        `;
+    }
+}
+
+// Get category display name
+function getCategoryDisplayName(category) {
+    const categoryMap = {
+        'snack-dolci': 'Snack Dolci',
+        'snack-salati': 'Snack Salati',
+        'healthy': 'Healthy',
+        'bevande': 'Bevande'
+    };
+    return categoryMap[category] || category;
+}
+
+// Navigate to product
+function navigateToProduct(productId) {
+    window.location.href = `dettaglio-prodotto.html?id=${productId}`;
+}
+
+// Show product not found
+function showProductNotFound() {
+    console.log('Product not found');
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('product-not-found').style.display = 'block';
+}
+
+// Quantity controls
+function increaseQuantity() {
+    const quantityInput = document.getElementById('quantity');
+    const currentValue = parseInt(quantityInput.value) || 1;
+    if (currentValue < 99) {
+        quantityInput.value = currentValue + 1;
+    }
+}
+
+function decreaseQuantity() {
+    const quantityInput = document.getElementById('quantity');
+    const currentValue = parseInt(quantityInput.value) || 1;
+    if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+    }
+}
+
+// Add product to cart from detail page
+function addProductToCart() {
+    if (!currentProduct) return;
+    
+    const quantity = parseInt(document.getElementById('quantity').value) || 1;
+    
+    // Get current cart
+    let carrello = JSON.parse(localStorage.getItem('cart') || '[]');
+    
+    // Convert current product to cart format
+    const cartProduct = {
+        name: currentProduct.nome,
+        title: currentProduct.nome,
+        price: currentProduct.prezzo,
+        image: currentProduct.immagine,
+        desc: currentProduct.descrizione,
+        category: currentProduct.categoria,
+        id: currentProduct.id
+    };
+    
+    // Add multiple items to cart based on quantity
+    for (let i = 0; i < quantity; i++) {
+        carrello.push(cartProduct);
+    }
+    
+    // Save to localStorage
+    localStorage.setItem('cart', JSON.stringify(carrello));
+    
+    // Update cart badge
+    updateCartBadge(carrello);
+    
+    // Show success notification
+    showNotification(`${cartProduct.name} è stato aggiunto al carrello!`, 'success');
+    
+    // Show success feedback
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+    const originalText = addToCartBtn.innerHTML;
+    
+    addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Aggiunto!';
+    addToCartBtn.style.background = 'var(--success-color)';
+    
+    setTimeout(() => {
+        addToCartBtn.innerHTML = originalText;
+        addToCartBtn.style.background = '';
+    }, 2000);
+}
+
+// Tab functionality
+function showTab(tabName) {
+    // Hide all tab contents
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(content => {
+        content.classList.remove('active');
+    });
+    
+    // Remove active class from all tab headers
+    const tabHeaders = document.querySelectorAll('.tab-header');
+    tabHeaders.forEach(header => {
+        header.classList.remove('active');
+    });
+    
+    // Show selected tab content
+    const selectedTabContent = document.getElementById(`tab-${tabName}`);
+    if (selectedTabContent) {
+        selectedTabContent.classList.add('active');
+    }
+    
+    // Add active class to clicked tab header
+    const selectedTabHeader = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+    if (selectedTabHeader) {
+        selectedTabHeader.classList.add('active');
+    }
+}
+
+// Update product links in existing pages to point to detail page
+function updateProductLinks() {
+    // This function can be called to update existing product cards to link to detail page
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        const productName = card.querySelector('h3')?.textContent;
+        if (productName) {
+            const productId = generateProductId(productName);
+            card.onclick = () => navigateToProduct(productId);
+        }
+    });
+}
 

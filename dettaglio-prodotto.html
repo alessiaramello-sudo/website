@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Dettaglio Prodotto - MoodBites</title>
+    <meta name="description" content="Scopri tutti i dettagli del prodotto selezionato, ingredienti, allergeni e informazioni nutrizionali.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" type="image/png" href="img/logo.png">
+</head>
+<body>
+    <!-- Enhanced Modern Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-container">
+                <div class="logo-icon">
+                    <div class="logo-shape">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                </div>
+                <div class="logo-text">
+                    <h1>MoodBites</h1>
+                    <p>Uno snack per ogni capriccio!</p>
+                </div>
+            </a>
+            
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="chisiamo.html">Chi Siamo</a></li>
+                    <li><a href="contatti.html">Contatti</a></li>
+                    <li><a href="allergeni.html">Allergeni</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="user-btn" aria-label="Profilo utente">
+                    <i class="fas fa-user"></i>
+                </button>
+                <a href="carrello.html" class="cart-btn" aria-label="Carrello">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </a>
+            </div>
+            
+            <button class="mobile-menu-btn" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="chisiamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                <li><a href="allergeni.html">Allergeni</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="separator">/</span>
+                <a href="prodotti.html">Prodotti</a>
+                <span class="separator">/</span>
+                <span id="breadcrumb-product">Dettaglio Prodotto</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Details Section -->
+    <main class="product-detail-page">
+        <div class="container">
+            <!-- Loading State -->
+            <div id="loading-state" class="loading-state">
+                <div class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                </div>
+                <p>Caricamento prodotto...</p>
+            </div>
+
+            <!-- Product Not Found -->
+            <div id="product-not-found" class="product-not-found" style="display: none;">
+                <div class="not-found-content">
+                    <div class="not-found-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h2>Prodotto non trovato</h2>
+                    <p>Il prodotto che stai cercando non esiste o non è più disponibile.</p>
+                    <a href="prodotti.html" class="btn btn-primary">
+                        <i class="fas fa-arrow-left"></i>
+                        Torna ai Prodotti
+                    </a>
+                </div>
+            </div>
+
+            <!-- Product Content -->
+            <div id="product-content" class="product-detail-content" style="display: none;">
+                <div class="product-detail-grid">
+                    <!-- Product Image Section -->
+                    <div class="product-image-section">
+                        <div class="product-image-container">
+                            <img id="product-image" src="" alt="" class="product-main-image">
+                            <div id="product-safety-badge" class="safety-badge">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Sicuro</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Info Section -->
+                    <div class="product-info-section">
+                        <div class="product-header">
+                            <div class="product-category">
+                                <span id="product-category-badge" class="category-badge">Categoria</span>
+                            </div>
+                            <h1 id="product-title" class="product-title">Nome Prodotto</h1>
+                            <p id="product-description" class="product-description">Descrizione del prodotto</p>
+                        </div>
+
+                        <div class="product-price-section">
+                            <div class="price-container">
+                                <span class="price-label">Prezzo</span>
+                                <span id="product-price" class="product-price">€0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Quantity and Add to Cart -->
+                        <div class="product-actions">
+                            <div class="quantity-selector">
+                                <label for="quantity">Quantità:</label>
+                                <div class="quantity-controls">
+                                    <button class="qty-btn" onclick="decreaseQuantity()">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <input type="number" id="quantity" value="1" min="1" max="99">
+                                    <button class="qty-btn" onclick="increaseQuantity()">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <button id="add-to-cart-btn" class="add-to-cart" onclick="addProductToCart()">
+                                <i class="fas fa-cart-plus"></i>
+                                Aggiungi al Carrello
+                            </button>
+                        </div>
+
+                        <!-- Product Features -->
+                        <div class="product-features">
+                            <h3>Caratteristiche</h3>
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <i class="fas fa-leaf"></i>
+                                    <span>Ingredienti naturali</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-heart"></i>
+                                    <span>Perfetto per il tuo umore</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Spedizione veloce</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Allergen Information -->
+                        <div class="allergen-info-section">
+                            <h3>Informazioni Allergeni</h3>
+                            <div id="allergen-details" class="allergen-details">
+                                <!-- Allergen content will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information Tabs -->
+                <div class="product-tabs">
+                    <div class="tab-headers">
+                        <button class="tab-header active" onclick="showTab('description')">
+                            <i class="fas fa-info-circle"></i>
+                            Descrizione Dettagliata
+                        </button>
+                        <button class="tab-header" onclick="showTab('ingredients')">
+                            <i class="fas fa-list"></i>
+                            Ingredienti
+                        </button>
+                        <button class="tab-header" onclick="showTab('nutrition')">
+                            <i class="fas fa-chart-bar"></i>
+                            Valori Nutrizionali
+                        </button>
+                    </div>
+
+                    <div class="tab-contents">
+                        <div id="tab-description" class="tab-content active">
+                            <div class="detailed-description">
+                                <h4>Descrizione Completa</h4>
+                                <p id="detailed-description-text">
+                                    Questo prodotto è stato accuratamente selezionato per offrirti un'esperienza gustativa unica 
+                                    e per aiutarti a gestire i tuoi stati d'animo attraverso il potere del cibo.
+                                </p>
+                                
+                                <h4>Benefici per il tuo Umore</h4>
+                                <div class="mood-benefits">
+                                    <div class="benefit-item">
+                                        <i class="fas fa-smile"></i>
+                                        <div>
+                                            <h5>Migliora l'Umore</h5>
+                                            <p>Ingredienti selezionati per stimolare la produzione di serotonina</p>
+                                        </div>
+                                    </div>
+                                    <div class="benefit-item">
+                                        <i class="fas fa-battery-full"></i>
+                                        <div>
+                                            <h5>Aumenta l'Energia</h5>
+                                            <p>Fornisce energia naturale per affrontare la giornata</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-ingredients" class="tab-content">
+                            <div class="ingredients-section">
+                                <h4>Elenco Ingredienti</h4>
+                                <div class="ingredients-list">
+                                    <p id="ingredients-text">
+                                        Gli ingredienti specifici variano per ogni prodotto. 
+                                        Consulta sempre l'etichetta del prodotto per informazioni complete.
+                                    </p>
+                                </div>
+                                
+                                <div class="allergen-warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <p><strong>Importante:</strong> Verifica sempre l'etichetta del prodotto per informazioni aggiornate su ingredienti e allergeni.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="tab-nutrition" class="tab-content">
+                            <div class="nutrition-section">
+                                <h4>Valori Nutrizionali Indicativi</h4>
+                                <div class="nutrition-table">
+                                    <div class="nutrition-row">
+                                        <span class="nutrition-label">Per 100g</span>
+                                        <span class="nutrition-value">Valore</span>
+                                    </div>
+                                    <div class="nutrition-row">
+                                        <span class="nutrition-label">Energia</span>
+                                        <span class="nutrition-value">~400 kcal</span>
+                                    </div>
+                                    <div class="nutrition-row">
+                                        <span class="nutrition-label">Carboidrati</span>
+                                        <span class="nutrition-value">~50g</span>
+                                    </div>
+                                    <div class="nutrition-row">
+                                        <span class="nutrition-label">Proteine</span>
+                                        <span class="nutrition-value">~8g</span>
+                                    </div>
+                                    <div class="nutrition-row">
+                                        <span class="nutrition-label">Grassi</span>
+                                        <span class="nutrition-value">~15g</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="nutrition-note">
+                                    <i class="fas fa-info-circle"></i>
+                                    <p>I valori nutrizionali sono indicativi e possono variare per ciascun prodotto. Consulta l'etichetta per informazioni precise.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="modern-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="img/logo.png" alt="MoodBites Logo">
+                        <h3>MoodBites</h3>
+                    </div>
+                    <p>Il tuo snack perfetto per ogni momento della giornata. Qualità, gusto e convenienza in un solo boccone.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Navigazione</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="prodotti.html">Prodotti</a></li>
+                        <li><a href="chisiamo.html">Chi Siamo</a></li>
+                        <li><a href="contatti.html">Contatti</a></li>
+                        <li><a href="allergeni.html">Allergeni</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorie</h4>
+                    <ul>
+                        <li><a href="prodotti.html?category=snack-salati" data-category="snack-salati">Snack Salati</a></li>
+                        <li><a href="prodotti.html?category=snack-dolci" data-category="snack-dolci">Snack Dolci</a></li>
+                        <li><a href="prodotti.html?category=bevande" data-category="bevande">Bevande</a></li>
+                        <li><a href="prodotti.html?category=healthy" data-category="healthy">Healthy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contatti</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@moodbites.it</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+39 06 1234567</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Roma, Italia</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; 2024 MoodBites. Tutti i diritti riservati.</p>
+                    <div class="footer-legal">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Termini di Servizio</a>
+                        <a href="#">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize product detail page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeProductDetailPage();
+        });
+    </script>
+</body>
+</html>
